@@ -24,7 +24,8 @@ class ActiveLearningExperiment:
 
         self.X, self.y = data.iloc[:, :-1], data.iloc[:, -1]
 
-    def run_strategy(self, estimator: BaseEstimator, query_strategy):
+    def run_strategy(self, estimator: BaseEstimator,
+                     query_strategy) -> pd.DataFrame:
 
         skf = StratifiedKFold(n_splits=self.n_splits,
                               shuffle=True,
@@ -34,7 +35,7 @@ class ActiveLearningExperiment:
             for train_index, test_index in skf.split(self.X, self.y)
         ]
 
-        return np.array(results).mean(axis=0)
+        return pd.DataFrame(results).T
 
     def __run_fold(self, estimator: BaseEstimator, query_strategy,
                    train_index, test_index):
@@ -56,7 +57,6 @@ class ActiveLearningExperiment:
 
             l_index = l_index.append(new_index)
 
-        print(l_index)
         l_X_pool = X_train.loc[l_index].values
         l_y_pool = y_train.loc[l_index].values
 
