@@ -1,5 +1,7 @@
+from os import environ
+environ['OMP_NUM_THREADS'] = '1'
+
 import os
-from functools import partial
 
 import pandas as pd
 from pyhard.measures import ClassificationMeasures
@@ -9,6 +11,7 @@ from tqdm import tqdm
 
 from config import CSV_DIR, RESULTS_DIR
 from active_learning_experiment import ActiveLearningExperiment
+from strategies.random import random_sampling
 from strategies.expected_error import expected_error_reduction
 from strategies.information_density import (density_weighted_sampling,
                                             training_utility_sampling)
@@ -39,6 +42,7 @@ def run_exeriments(dataset_file, estimator, query_strategy,
 if __name__ == '__main__':
 
     sampling_methods = [
+        random_sampling,
         margin_sampling,
         density_weighted_sampling,
         training_utility_sampling,
