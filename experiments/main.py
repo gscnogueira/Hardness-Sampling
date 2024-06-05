@@ -1,10 +1,9 @@
 from os import environ
-environ['OMP_NUM_THREADS'] = '1'
+# environ['OMP_NUM_THREADS'] = '1'
 
 import os
 
 import pandas as pd
-from pyhard.measures import ClassificationMeasures
 from sklearn.neighbors import KNeighborsClassifier
 from modAL.uncertainty import margin_sampling
 from tqdm import tqdm
