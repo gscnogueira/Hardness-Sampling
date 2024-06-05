@@ -1,4 +1,6 @@
 from functools import partial
+import warnings
+
 
 from modAL.models import ActiveLearner
 from sklearn.model_selection import StratifiedKFold
@@ -10,24 +12,22 @@ import pandas as pd
 
 
 class ActiveLearningExperiment:
-
     def __init__(self, data: pd.DataFrame, n_queries: int,
                  batch_size=1, initial_labeled_size: int = 5,
-                 random_state=None, n_splits: int = 5):
+                 random_state=None):
 
         self.batch_size = batch_size
         self.n_queries = n_queries
         self.data = data
-        self.n_splits = n_splits
         self.random_state = random_state
         self.initial_labeled_size = initial_labeled_size
 
         self.X, self.y = data.iloc[:, :-1], data.iloc[:, -1]
 
     def run_strategy(self, estimator: BaseEstimator,
-                     query_strategy) -> pd.DataFrame:
+                     query_strategy, n_splits=5) -> pd.DataFrame:
 
-        skf = StratifiedKFold(n_splits=self.n_splits,
+        skf = StratifiedKFold(n_splits=n_splits,
                               shuffle=True,
                               random_state=self.random_state)
         results = [
@@ -60,8 +60,8 @@ class ActiveLearningExperiment:
         l_X_pool = X_train.loc[l_index].values
         l_y_pool = y_train.loc[l_index].values
 
-        u_X_pool = X_train.drop(l_index).values
-        u_y_pool = y_train.drop(l_index).values
+        u_X_pool = X_train.drop(l_index)
+        u_y_pool = y_train.drop(l_index)
 
         args = dict()
         args['estimator'] = estimator()
@@ -76,15 +76,19 @@ class ActiveLearningExperiment:
         # Active Learning Loop
         for idx in range(self.n_queries):
 
+            print('Query', idx)
+
             if np.size(u_y_pool) <= 0:
                 break
 
-            query_index, _ = learner.query(u_X_pool)
+            query_index, _ = learner.query(u_X_pool.values)
 
-            learner.teach(X=u_X_pool[query_index], y=u_y_pool[query_index])
+            learner.teach(X=u_X_pool.iloc[query_index].values,
+                          y=u_y_pool.iloc[query_index].values)
 
-            u_X_pool = np.delete(u_X_pool, query_index, axis=0)
-            u_y_pool = np.delete(u_y_pool, query_index, axis=0)
+            query_index = u_X_pool.index[query_index]
+            u_X_pool = u_X_pool.drop(query_index)
+            u_y_pool = u_y_pool.drop(query_index)
 
             y_pred = learner.predict(X_test.values)
 
