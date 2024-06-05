@@ -32,8 +32,9 @@ def run_exeriments(dataset_file, estimator, query_strategy,
 
     dataset_name, _ = os.path.splitext(dataset_file)
 
-    file_name = (f'{dataset_name}_{estimator.__name__}'
-                 f'_{query_strategy.__name__}.csv')
+    file_name = (f'{dataset_name}#'
+                 f'{estimator.__name__}#'
+                 f'{query_strategy.__name__}.csv')
 
     scores.to_csv(os.path.join(RESULTS_DIR, file_name))
 
