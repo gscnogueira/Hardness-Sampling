@@ -11,10 +11,10 @@ from strategies.information_density import (density_weighted_sampling,
 # -----------EXPERIMENTAL SETTINGS-----------------
 
 # number of queries for the active learning process
-N_QUERIES = 2
+N_QUERIES = 100
 
 # n_splits for cross-validation
-N_SPLITS = 2
+N_SPLITS = 5
 
 RESULTS_DIR = '../results/'
 
@@ -27,7 +27,7 @@ SAMPLING_METHODS = [
     margin_sampling,
     density_weighted_sampling,
     training_utility_sampling,
-    # expected_error_reduction,
+    expected_error_reduction,
     ih.borderline_points_sampling,
     ih.class_balance_sampling,
     ih.class_likelihood_sampling,
@@ -54,7 +54,7 @@ ARFF_DIR = '../datasets/arff/'
 CSV_DIR = '../datasets/csv'
 
 # -----------MULTIPROCESSING----------------------
-N_WORKERS = 11
+N_WORKERS = None
 
 # -----------LOGGING-----------------------------
 LOG_FILE = 'experiments.log'
