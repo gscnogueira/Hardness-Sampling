@@ -1,5 +1,4 @@
-from os import environ
-# environ['OMP_NUM_THREADS'] = '1'
+# from os import environ; environ['OMP_NUM_THREADS'] = '1'
 
 import os
 import sys
@@ -10,16 +9,9 @@ from multiprocessing import Pool
 from itertools import product
 
 import pandas as pd
-from modAL.uncertainty import margin_sampling
 from tqdm import tqdm
 
 from active_learning_experiment import ActiveLearningExperiment
-from strategies.random import random_sampling
-from strategies.expected_error import expected_error_reduction
-from strategies.information_density import (density_weighted_sampling,
-                                            training_utility_sampling)
-
-import strategies.hardness as ih
 import config
 
 
@@ -93,51 +85,19 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
 
 if __name__ == '__main__':
 
-    hardness_methods = [
-        ih.borderline_points_sampling,
-        ih.class_balance_sampling,
-        ih.class_likelihood_sampling,
-        ih.class_likeliood_diff_sampling,
-        ih.disjunct_class_percentage_sampling,
-        ih.disjunct_size_sampling,
-        ih.f1_sampling,
-        ih.f2_sampling,
-        ih.f3_sampling,
-        ih.f4_sampling,
-        ih.harmfulness_sampling,
-        ih.intra_extra_ratio_sampling,
-        ih.k_disagreeing_neighbors_sampling,
-        ih.local_set_cardinality_sampling,
-        ih.ls_radius_sampling,
-        ih.minority_value_sampling,
-        ih.tree_depth_pruned_sampling,
-        ih.tree_depth_unpruned_sampling,
-        ih.usefulness_sampling,
-    ]
-
-    classic_methods = [
-        random_sampling,
-        margin_sampling,
-        density_weighted_sampling,
-        training_utility_sampling,
-        # expected_error_reduction,
-    ]
-
-    sampling_methods = hardness_methods + classic_methods
     datasets = [f for f in os.listdir(config.CSV_DIR)]
 
-    args = (datasets, config.CLASSIFIER_DICT, sampling_methods)
+    args = (datasets, config.CLASSIFIER_DICT, config.SAMPLING_METHODS)
 
     with Pool(config.N_WORKERS) as p:
 
         run_experiments_partial = partial(run_experiments,
-                                          n_queries=2,
-                                          n_splits=2)
+                                          n_queries=config.N_QUERIES,
+                                          n_splits=config.N_SPLITS)
 
         experiments_pool = p.imap_unordered(run_experiments_partial,
                                             product(*args))
 
-        pbar = tqdm(experiments_pool,
-                    file=sys.stdout,
+        pbar = tqdm(experiments_pool, file=sys.stdout,
                     total=reduce(lambda x, y: x*y, map(len, args)))
         list(pbar)
