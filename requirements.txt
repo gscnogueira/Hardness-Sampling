@@ -26,6 +26,7 @@ markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 matplotlib==3.7.5
 mdurl==0.1.2
+modAL-python==0.4.2.1
 ncafs==0.2.1
 networkx==3.1
 numpy==1.24.4
@@ -55,6 +56,8 @@ seaborn==0.13.2
 Shapely==1.8.5.post1
 shellingham==1.5.4
 six==1.16.0
+skorch==0.9.0
+tabulate==0.9.0
 tenacity==8.3.0
 threadpoolctl==3.5.0
 tornado==6.4
