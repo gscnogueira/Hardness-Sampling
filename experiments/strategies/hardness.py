@@ -8,6 +8,7 @@ from pyhard.measures import ClassificationMeasures
 
 from .random import random_sampling
 
+
 def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray) -> pd.DataFrame:
     columns = [f'f_{i}' for i in range(X.shape[1])]
     X_df = pd.DataFrame(X, columns=columns)
@@ -20,16 +21,25 @@ def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
                                 measure: str, n_instances=1):
     try:
 
-        # warnings.simplefilter('error', Warning)
-        measures_obj = __get_hardness_obj(learner, X)
-        results = getattr(measures_obj, measure)()
-        
+        with warnings.catch_warnings():
+
+            warnings.simplefilter('error')
+
+            with warnings.catch_warnings():
+                # Filtro para evitar warnings durante multiprocessing
+                warnings.filterwarnings("ignore", message=".*Loky-backed .*")
+
+                measures_obj = __get_hardness_obj(learner, X)
+                results = getattr(measures_obj, measure)()
+
         return multi_argmax(results, n_instances)
 
     except Exception as e:
 
         warnings.warn(
-            f'An error occurred while calculating {measure}: ({type(e).__name__}) "{e}".'
+            f'[|L|={learner.X_training.shape[0]}] '
+            f'An error occurred while calculating {measure}: '
+            f'({type(e).__name__}) "{e}" .'
             ' Falling back to random sampling.',
             UserWarning)
 
