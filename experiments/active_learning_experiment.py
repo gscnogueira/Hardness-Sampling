@@ -76,8 +76,6 @@ class ActiveLearningExperiment:
         # Active Learning Loop
         for idx in range(self.n_queries):
 
-            print('Query', idx)
-
             if np.size(u_y_pool) <= 0:
                 break
 

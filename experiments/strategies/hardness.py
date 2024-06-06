@@ -1,25 +1,39 @@
+import warnings
+
 import numpy as np
 import pandas as pd
 from modAL.utils.selection import multi_argmax
 from modAL import ActiveLearner
 from pyhard.measures import ClassificationMeasures
 
+from .random import random_sampling
 
 def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray) -> pd.DataFrame:
     columns = [f'f_{i}' for i in range(X.shape[1])]
     X_df = pd.DataFrame(X, columns=columns)
     y_pred = learner.predict(X)
-    print('Classes preditas:', np.unique(y_pred))
 
     return ClassificationMeasures(X_df.assign(y=y_pred))
 
 
 def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
                                 measure: str, n_instances=1):
-    measures_obj = __get_hardness_obj(learner, X)
-    results = getattr(measures_obj, measure)()
+    try:
 
-    return multi_argmax(results, n_instances)
+        # warnings.simplefilter('error', Warning)
+        measures_obj = __get_hardness_obj(learner, X)
+        results = getattr(measures_obj, measure)()
+        
+        return multi_argmax(results, n_instances)
+
+    except Exception as e:
+
+        warnings.warn(
+            f'An error occurred while calculating {measure}: ({type(e).__name__}) "{e}".'
+            ' Falling back to random sampling.',
+            UserWarning)
+
+        return random_sampling(learner, X, n_instances)
 
 
 def k_disagreeing_neighbors_sampling(learner: ActiveLearner, X: np.ndarray,
