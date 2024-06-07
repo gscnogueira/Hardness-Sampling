@@ -54,7 +54,7 @@ ARFF_DIR = '../datasets/arff/'
 CSV_DIR = '../datasets/csv'
 
 # -----------MULTIPROCESSING----------------------
-N_WORKERS = None
+N_WORKERS = 95
 
 # -----------LOGGING-----------------------------
 LOG_FILE = 'experiments.log'
