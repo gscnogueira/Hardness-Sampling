@@ -1,6 +1,10 @@
 from functools import partial
-from sklearn.svm import SVC
+
 from modAL.uncertainty import margin_sampling
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.naive_bayes import GaussianNB
 
 import strategies.hardness as ih
 from strategies.random import random_sampling
@@ -19,7 +23,10 @@ N_SPLITS = 5
 RESULTS_DIR = '../results/'
 
 CLASSIFIER_DICT = {
-    "SVC": partial(SVC, probability=True)
+    # "SVC": partial(SVC, probability=True),
+    # "5NN": KNeighborsClassifier,
+    # "Decision Tree": DecisionTreeClassifier,
+    # "Gaussian Naive Bayes",
 }
 
 SAMPLING_METHODS = [
