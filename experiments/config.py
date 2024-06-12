@@ -34,7 +34,7 @@ SAMPLING_METHODS = [
     margin_sampling,
     density_weighted_sampling,
     training_utility_sampling,
-    expected_error_reduction,
+    # expected_error_reduction,
     ih.borderline_points_sampling,
     ih.class_balance_sampling,
     ih.class_likelihood_sampling,
