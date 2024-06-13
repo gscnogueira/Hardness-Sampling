@@ -1,4 +1,4 @@
-# from os import environ; environ['OMP_NUM_THREADS'] = '1'
+from os import environ; environ['OMP_NUM_THREADS'] = '1'
 
 import os
 import sys
@@ -47,11 +47,25 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
 
     logger = setup_logger(logger_name)
 
+    dataset_name, _ = os.path.splitext(dataset_file)
+
+    file_name = (f'{dataset_name}#'
+                 f'{estimator_name}#'
+                 f'{query_strategy.__name__}.csv')
+
+    results_path = os.path.join(config.RESULTS_DIR, file_name)
+
+
+    if os.path.exists(results_path):
+        logger.info("Experimento já havia sido realizado")
+        return 
+
+
     def custom_show_warning(message, category, filename, lineno,
                             file=None, line=None):
         logger.warning(str(message))
 
-    logger.info("Processo Iniciado")
+    logger.info("Processo iniciado")
 
     df = pd.read_csv(os.path.join(config.CSV_DIR, dataset_file))
 
@@ -72,13 +86,8 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
             logger.error(str(e))
             return
 
-    dataset_name, _ = os.path.splitext(dataset_file)
 
-    file_name = (f'{dataset_name}#'
-                 f'{estimator_name}#'
-                 f'{query_strategy.__name__}.csv')
-
-    scores.to_csv(os.path.join(config.RESULTS_DIR, file_name))
+    scores.to_csv(results_path)
 
     logger.info("Processo finalizado")
 
