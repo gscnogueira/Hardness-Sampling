@@ -26,7 +26,7 @@ CLASSIFIER_DICT = {
     # "SVC": partial(SVC, probability=True),
     # "5NN": KNeighborsClassifier,
     "Decision Tree": DecisionTreeClassifier,
-    # "Gaussian Naive Bayes",
+    "Gaussian Naive Bayes": GaussianNB,
 }
 
 SAMPLING_METHODS = [
@@ -61,7 +61,7 @@ ARFF_DIR = '../datasets/arff/'
 CSV_DIR = '../datasets/csv'
 
 # -----------MULTIPROCESSING----------------------
-N_WORKERS = 5
+N_WORKERS = 95
 
 # -----------LOGGING-----------------------------
 LOG_FILE = 'experiments.log'
