@@ -23,10 +23,10 @@ N_SPLITS = 5
 RESULTS_DIR = '../results/'
 
 CLASSIFIER_DICT = {
-    # "SVC": partial(SVC, probability=True),
-    # "5NN": KNeighborsClassifier,
-    # "DecisionTree": DecisionTreeClassifier,
-    # "GaussianNB": GaussianNB,
+    "SVC": partial(SVC, probability=True),
+    "5NN": KNeighborsClassifier,
+    "DecisionTree": DecisionTreeClassifier,
+    "GaussianNB": GaussianNB,
 }
 
 SAMPLING_METHODS = [
@@ -61,7 +61,7 @@ ARFF_DIR = '../datasets/arff/'
 CSV_DIR = '../datasets/csv'
 
 # -----------MULTIPROCESSING----------------------
-N_WORKERS = 95
+N_WORKERS = 10
 
 # -----------LOGGING-----------------------------
-LOG_DIR = 'logs'
+LOG_DIR = '../logs'
