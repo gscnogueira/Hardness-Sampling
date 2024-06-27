@@ -6,7 +6,7 @@ from modAL.models import ActiveLearner
 from sklearn.model_selection import StratifiedKFold
 from sklearn.base import BaseEstimator
 
-from sklearn.metrics import f1_score
+from sklearn.metrics import cohen_kappa_score
 import numpy as np
 import pandas as pd
 
@@ -90,7 +90,7 @@ class ActiveLearningExperiment:
 
             y_pred = learner.predict(X_test.values)
 
-            score = f1_score(y_test, y_pred, average='macro')
+            score = cohen_kappa_score(y_test, y_pred)
             scores.append(score)
 
         return scores
