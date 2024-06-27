@@ -15,12 +15,21 @@ from active_learning_experiment import ActiveLearningExperiment
 import config
 
 
-def setup_logger(logger_name):
+def setup_logger(dataset_file, estimator_name, query_strategy):
+
+    logger_name = (
+        "["
+        f"{dataset_file}, "
+        f"{estimator_name}, "
+        f"{query_strategy.__name__}"
+        "]")
 
     logger = logging.getLogger(logger_name)
     logger.setLevel(logging.DEBUG)
 
-    handler = logging.FileHandler(config.LOG_FILE)
+    handler = logging.FileHandler(
+        os.path.join(config.LOG_DIR, f'experiments_{estimator_name}.log'))
+
     handler.setLevel(logging.DEBUG)
 
     formatter = logging.Formatter(
@@ -38,14 +47,9 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
     dataset_file, estimator_name, query_strategy = args
     estimator = config.CLASSIFIER_DICT[estimator_name]
 
-    logger_name = (
-        "["
-        f"{dataset_file}, "
-        f"{estimator_name}, "
-        f"{query_strategy.__name__}"
-        "]")
-
-    logger = setup_logger(logger_name)
+    logger = setup_logger(dataset_file,
+                          estimator_name,
+                          query_strategy)
 
     dataset_name, _ = os.path.splitext(dataset_file)
 
@@ -54,7 +58,6 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
                  f'{query_strategy.__name__}.csv')
 
     results_path = os.path.join(config.RESULTS_DIR, file_name)
-
 
     if os.path.exists(results_path):
         logger.info("Experimento já havia sido realizado")
