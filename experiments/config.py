@@ -25,8 +25,8 @@ RESULTS_DIR = '../results/'
 CLASSIFIER_DICT = {
     # "SVC": partial(SVC, probability=True),
     # "5NN": KNeighborsClassifier,
-    "Decision Tree": DecisionTreeClassifier,
-    "Gaussian Naive Bayes": GaussianNB,
+    # "DecisionTree": DecisionTreeClassifier,
+    # "GaussianNB": GaussianNB,
 }
 
 SAMPLING_METHODS = [
@@ -64,4 +64,4 @@ CSV_DIR = '../datasets/csv'
 N_WORKERS = 95
 
 # -----------LOGGING-----------------------------
-LOG_FILE = 'experiments.log'
+LOG_DIR = 'logs'
