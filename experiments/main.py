@@ -28,7 +28,7 @@ def setup_logger(dataset_file, estimator_name, query_strategy):
     logger.setLevel(logging.DEBUG)
 
     handler = logging.FileHandler(
-        os.path.join(config.LOG_DIR, f'experiments_{estimator_name}.log'))
+        os.path.join(config.LOG_DIR, f'experiments_{estimator_name}_{query_strategy.__name__}.log'))
 
     handler.setLevel(logging.DEBUG)
 
