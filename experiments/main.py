@@ -5,7 +5,8 @@ import sys
 from functools import partial, reduce
 import logging
 import warnings
-from multiprocessing import Pool
+from multiprocessing import Pool, Process
+from multiprocessing import Queue
 from itertools import product
 
 import pandas as pd
@@ -14,42 +15,57 @@ from tqdm import tqdm
 from active_learning_experiment import ActiveLearningExperiment
 import config
 
+formatter = logging.Formatter(
+    '%(asctime)s - %(process)d - %(name)s - %(levelname)s - %(message)s')
+
+def logger_process():
+    global queue
+    logger = logging.getLogger('app')
+    logger.setLevel(logging.DEBUG)
+
+    handler = logging.FileHandler(os.path.join(config.LOG_DIR,
+                                               'experiments.log'))
+
+    logger.addHandler(handler)
+
+    while True:
+        message = queue.get()
+
+        if message is None:
+            break
+
+        logger.handle(message)
+
 
 def setup_logger(dataset_file, estimator_name, query_strategy):
 
-    logger_name = (
-        "["
-        f"{dataset_file}, "
-        f"{estimator_name}, "
-        f"{query_strategy.__name__}"
-        "]")
+    global queue
+
+    logger_name = (f"{dataset_file} - "
+                   f"{estimator_name} - "
+                   f"{query_strategy.__name__}")
 
     logger = logging.getLogger(logger_name)
+
     logger.setLevel(logging.DEBUG)
 
-    handler = logging.FileHandler(
-        os.path.join(config.LOG_DIR, f'experiments_{estimator_name}_{query_strategy.__name__}.log'))
-
-    handler.setLevel(logging.DEBUG)
-
-    formatter = logging.Formatter(
-        '%(asctime)s - %(process)d - %(name)s - %(levelname)s - %(message)s')
+    handler = logging.handlers.QueueHandler(queue)
     handler.setFormatter(formatter)
-
     logger.addHandler(handler)
 
     return logger
 
 
-def run_experiments(args, n_queries=100, initial_labeled_size=5,
-                   random_satate=None, n_splits=5):
+def run_experiments(args,
+                    n_queries=100,
+                    initial_labeled_size=5,
+                    random_satate=None,
+                    n_splits=5):
 
     dataset_file, estimator_name, query_strategy = args
     estimator = config.CLASSIFIER_DICT[estimator_name]
 
-    logger = setup_logger(dataset_file,
-                          estimator_name,
-                          query_strategy)
+    logger = setup_logger(dataset_file, estimator_name, query_strategy,)
 
     dataset_name, _ = os.path.splitext(dataset_file)
 
@@ -61,8 +77,7 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
 
     if os.path.exists(results_path):
         logger.info("Experimento já havia sido realizado")
-        return 
-
+        return
 
     def custom_show_warning(message, category, filename, lineno,
                             file=None, line=None):
@@ -89,7 +104,6 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
             logger.error(str(e))
             return
 
-
     scores.to_csv(results_path)
 
     logger.info("Processo finalizado")
@@ -101,6 +115,22 @@ if __name__ == '__main__':
 
     args = (datasets, config.CLASSIFIER_DICT, config.SAMPLING_METHODS)
 
+    global queue
+    queue = Queue()
+
+    logger_p = Process(target=logger_process)
+    logger_p.start()
+
+    main_logger = logging.getLogger()
+    main_logger.setLevel(logging.DEBUG)
+
+    handler = logging.handlers.QueueHandler(queue)
+    handler.setFormatter(formatter)
+
+    main_logger.addHandler(handler)
+
+    main_logger.info('Iniciando experimentos')
+
     with Pool(config.N_WORKERS) as p:
 
         run_experiments_partial = partial(run_experiments,
@@ -110,6 +140,10 @@ if __name__ == '__main__':
         experiments_pool = p.imap_unordered(run_experiments_partial,
                                             product(*args))
 
-        pbar = tqdm(experiments_pool, file=sys.stdout,
-                    total=reduce(lambda x, y: x*y, map(len, args)))
-        list(pbar)
+        pbar = tqdm(total=reduce(lambda x, y: x*y, map(len, args)))
+
+        for _ in experiments_pool:
+            pbar.update()
+
+    main_logger.info('Experimentos finalizados.')
+    queue.put(None)
