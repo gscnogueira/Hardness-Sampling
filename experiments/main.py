@@ -16,17 +16,18 @@ from active_learning_experiment import ActiveLearningExperiment
 import config
 
 formatter = logging.Formatter(
-    '%(asctime)s - %(process)d - %(name)s - %(levelname)s - %(message)s')
+    '%(asctime)s - %(process)d - %(levelname)s - %(message)s')
 
 def logger_process():
     global queue
-    logger = logging.getLogger('app')
+    logger = logging.getLogger()
     logger.setLevel(logging.DEBUG)
 
+    handler = logging.StreamHandler()
     handler = logging.FileHandler(os.path.join(config.LOG_DIR,
                                                'experiments.log'))
-
     logger.addHandler(handler)
+    handler.setFormatter(formatter)
 
     while True:
         message = queue.get()
@@ -37,35 +38,20 @@ def logger_process():
         logger.handle(message)
 
 
-def setup_logger(dataset_file, estimator_name, query_strategy):
+def run_experiments(args, n_queries=100, initial_labeled_size=5,
+                    random_satate=None, n_splits=5):
 
-    global queue
-
-    logger_name = (f"{dataset_file} - "
-                   f"{estimator_name} - "
-                   f"{query_strategy.__name__}")
-
-    logger = logging.getLogger(logger_name)
+    logger = logging.getLogger()
 
     logger.setLevel(logging.DEBUG)
 
-    handler = logging.handlers.QueueHandler(queue)
-    handler.setFormatter(formatter)
-    logger.addHandler(handler)
-
-    return logger
-
-
-def run_experiments(args,
-                    n_queries=100,
-                    initial_labeled_size=5,
-                    random_satate=None,
-                    n_splits=5):
+    if not logger.hasHandlers():
+        global queue
+        logger.addHandler(logging.handlers.QueueHandler(queue))
 
     dataset_file, estimator_name, query_strategy = args
-    estimator = config.CLASSIFIER_DICT[estimator_name]
 
-    logger = setup_logger(dataset_file, estimator_name, query_strategy,)
+    estimator = config.CLASSIFIER_DICT[estimator_name]
 
     dataset_name, _ = os.path.splitext(dataset_file)
 
@@ -76,14 +62,16 @@ def run_experiments(args,
     results_path = os.path.join(config.RESULTS_DIR, file_name)
 
     if os.path.exists(results_path):
-        logger.info("Experimento já havia sido realizado")
+        logger.info("(%s, %s, %s) Experimento já havia sido realizado",
+                    dataset_file, estimator_name, query_strategy.__name__)
         return
 
     def custom_show_warning(message, category, filename, lineno,
                             file=None, line=None):
         logger.warning(str(message))
 
-    logger.info("Processo iniciado")
+    logger.info("(%s, %s, %s) Processo iniciado",
+                dataset_file, estimator_name, query_strategy.__name__)
 
     df = pd.read_csv(os.path.join(config.CSV_DIR, dataset_file))
 
@@ -106,7 +94,8 @@ def run_experiments(args,
 
     scores.to_csv(results_path)
 
-    logger.info("Processo finalizado")
+    logger.info("(%s, %s, %s) Processo finalizado",
+                dataset_file, estimator_name, query_strategy.__name__)
 
 
 if __name__ == '__main__':
@@ -125,7 +114,7 @@ if __name__ == '__main__':
     main_logger.setLevel(logging.DEBUG)
 
     handler = logging.handlers.QueueHandler(queue)
-    handler.setFormatter(formatter)
+    # handler.setFormatter(formatter)
 
     main_logger.addHandler(handler)
 
@@ -140,10 +129,10 @@ if __name__ == '__main__':
         experiments_pool = p.imap_unordered(run_experiments_partial,
                                             product(*args))
 
-        pbar = tqdm(total=reduce(lambda x, y: x*y, map(len, args)))
+        pbar = tqdm(experiments_pool,
+                    total=reduce(lambda x, y: x*y, map(len, args)))
 
-        for _ in experiments_pool:
-            pbar.update()
+        list(pbar)
 
     main_logger.info('Experimentos finalizados.')
     queue.put(None)
