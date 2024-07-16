@@ -109,3 +109,5 @@
 2024-07-03 18:19:43,929 - 3264764 - [ionosphere.csv, GaussianNB, margin_sampling] - INFO - Processo finalizado
 2024-07-03 18:58:21,728 - 3264744 - [mfeat-fourier.csv, GaussianNB, margin_sampling] - INFO - Processo iniciado
 2024-07-03 18:58:32,571 - 3264744 - [mfeat-fourier.csv, GaussianNB, margin_sampling] - INFO - Processo finalizado
+2024-07-04 09:26:01,359 - 3264819 - [mushroom.csv, GaussianNB, margin_sampling] - INFO - Processo iniciado
+2024-07-04 09:26:26,450 - 3264819 - [mushroom.csv, GaussianNB, margin_sampling] - INFO - Processo finalizado

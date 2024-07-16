@@ -5632,3 +5632,4 @@
 2024-07-03 20:46:12,568 - 3264818 - [mfeat-fourier.csv, GaussianNB, disjunct_size_sampling] - WARNING - [|L|=105] An error occurred while calculating disjunct_size: (UserWarning) "The least populated class in y has only 1 members, which is less than n_splits=5." . Falling back to random sampling.
 2024-07-03 20:46:12,887 - 3264818 - [mfeat-fourier.csv, GaussianNB, disjunct_size_sampling] - WARNING - [|L|=106] An error occurred while calculating disjunct_size: (UserWarning) "The least populated class in y has only 1 members, which is less than n_splits=5." . Falling back to random sampling.
 2024-07-03 21:12:48,768 - 3264818 - [mfeat-fourier.csv, GaussianNB, disjunct_size_sampling] - INFO - Processo finalizado
+2024-07-04 09:57:51,402 - 3264754 - [mushroom.csv, GaussianNB, disjunct_size_sampling] - INFO - Processo iniciado

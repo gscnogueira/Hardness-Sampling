@@ -4803,3 +4803,4 @@
 2024-07-03 19:52:28,276 - 3264805 - [mfeat-fourier.csv, GaussianNB, borderline_points_sampling] - WARNING - [|L|=74] An error occurred while calculating borderline_points: (UserWarning) "The least populated class in y has only 1 members, which is less than n_splits=5." . Falling back to random sampling.
 2024-07-03 19:52:28,639 - 3264805 - [mfeat-fourier.csv, GaussianNB, borderline_points_sampling] - WARNING - [|L|=75] An error occurred while calculating borderline_points: (UserWarning) "The least populated class in y has only 4 members, which is less than n_splits=5." . Falling back to random sampling.
 2024-07-03 21:31:23,929 - 3264805 - [mfeat-fourier.csv, GaussianNB, borderline_points_sampling] - INFO - Processo finalizado
+2024-07-04 09:34:14,237 - 3556261 - [mushroom.csv, GaussianNB, borderline_points_sampling] - INFO - Processo iniciado

@@ -109,3 +109,5 @@
 2024-07-03 18:13:26,436 - 3264734 - [ionosphere.csv, DecisionTree, random_sampling] - INFO - Processo finalizado
 2024-07-03 18:50:45,348 - 3264811 - [mfeat-fourier.csv, DecisionTree, random_sampling] - INFO - Processo iniciado
 2024-07-03 18:50:51,404 - 3264811 - [mfeat-fourier.csv, DecisionTree, random_sampling] - INFO - Processo finalizado
+2024-07-04 07:39:15,680 - 3264790 - [mushroom.csv, DecisionTree, random_sampling] - INFO - Processo iniciado
+2024-07-04 07:39:23,371 - 3264790 - [mushroom.csv, DecisionTree, random_sampling] - INFO - Processo finalizado

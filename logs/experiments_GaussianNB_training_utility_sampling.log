@@ -109,3 +109,5 @@
 2024-07-03 18:19:49,408 - 3264764 - [ionosphere.csv, GaussianNB, training_utility_sampling] - INFO - Processo finalizado
 2024-07-03 18:59:05,894 - 3264744 - [mfeat-fourier.csv, GaussianNB, training_utility_sampling] - INFO - Processo iniciado
 2024-07-03 18:59:41,056 - 3264744 - [mfeat-fourier.csv, GaussianNB, training_utility_sampling] - INFO - Processo finalizado
+2024-07-04 09:29:52,507 - 3264775 - [mushroom.csv, GaussianNB, training_utility_sampling] - INFO - Processo iniciado
+2024-07-04 09:48:32,578 - 3264775 - [mushroom.csv, GaussianNB, training_utility_sampling] - INFO - Processo finalizado

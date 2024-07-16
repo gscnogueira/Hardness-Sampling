@@ -109,3 +109,7 @@
 2024-07-03 17:40:09,412 - 3264734 - [ionosphere.csv, SVC, margin_sampling] - INFO - Processo finalizado
 2024-07-03 18:26:42,381 - 3556932 - [mfeat-fourier.csv, SVC, margin_sampling] - INFO - Processo iniciado
 2024-07-03 18:27:08,724 - 3556932 - [mfeat-fourier.csv, SVC, margin_sampling] - INFO - Processo finalizado
+2024-07-04 02:52:48,470 - 3264736 - [mushroom.csv, SVC, margin_sampling] - INFO - Processo iniciado
+2024-07-04 02:53:48,802 - 3264736 - [mushroom.csv, SVC, margin_sampling] - INFO - Processo finalizado
+2024-07-04 11:31:16,237 - 3264772 - [ringnorm.csv, SVC, margin_sampling] - INFO - Processo iniciado
+2024-07-04 11:31:46,968 - 3264772 - [ringnorm.csv, SVC, margin_sampling] - INFO - Processo finalizado

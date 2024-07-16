@@ -3418,3 +3418,7 @@
 2024-07-03 18:43:32,328 - 3264797 - [ionosphere.csv, DecisionTree, class_likeliood_diff_sampling] - INFO - Processo finalizado
 2024-07-03 18:51:25,503 - 3264811 - [mfeat-fourier.csv, DecisionTree, class_likeliood_diff_sampling] - INFO - Processo iniciado
 2024-07-03 21:20:49,586 - 3264811 - [mfeat-fourier.csv, DecisionTree, class_likeliood_diff_sampling] - WARNING - [|L|=36] An error occurred while calculating class_likeliood_diff: (UserWarning) "The least populated class in y has only 3 members, which is less than n_splits=5." . Falling back to random sampling.
+2024-07-03 23:13:44,399 - 3264811 - [mfeat-fourier.csv, DecisionTree, class_likeliood_diff_sampling] - WARNING - [|L|=27] An error occurred while calculating class_likeliood_diff: (UserWarning) "The least populated class in y has only 4 members, which is less than n_splits=5." . Falling back to random sampling.
+2024-07-04 02:47:50,970 - 3264811 - [mfeat-fourier.csv, DecisionTree, class_likeliood_diff_sampling] - WARNING - [|L|=15] An error occurred while calculating class_likeliood_diff: (UserWarning) "The least populated class in y has only 2 members, which is less than n_splits=5." . Falling back to random sampling.
+2024-07-04 04:37:50,296 - 3264811 - [mfeat-fourier.csv, DecisionTree, class_likeliood_diff_sampling] - INFO - Processo finalizado
+2024-07-04 08:03:18,020 - 3264797 - [mushroom.csv, DecisionTree, class_likeliood_diff_sampling] - INFO - Processo iniciado

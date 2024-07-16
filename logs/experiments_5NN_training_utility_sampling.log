@@ -109,3 +109,5 @@
 2024-07-03 17:52:58,622 - 3264817 - [ionosphere.csv, 5NN, training_utility_sampling] - INFO - Processo finalizado
 2024-07-03 18:45:01,237 - 3560541 - [mfeat-fourier.csv, 5NN, training_utility_sampling] - INFO - Processo iniciado
 2024-07-03 18:45:46,317 - 3560541 - [mfeat-fourier.csv, 5NN, training_utility_sampling] - INFO - Processo finalizado
+2024-07-04 04:54:46,887 - 3264744 - [mushroom.csv, 5NN, training_utility_sampling] - INFO - Processo iniciado
+2024-07-04 05:06:24,475 - 3264744 - [mushroom.csv, 5NN, training_utility_sampling] - INFO - Processo finalizado

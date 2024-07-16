@@ -2991,3 +2991,6 @@
 2024-07-03 18:54:22,997 - 3264817 - [mfeat-fourier.csv, DecisionTree, f4_sampling] - INFO - Processo iniciado
 2024-07-03 18:55:39,940 - 3264817 - [mfeat-fourier.csv, DecisionTree, f4_sampling] - WARNING - [|L|=11] An error occurred while calculating f4: (UserWarning) "The least populated class in y has only 1 members, which is less than n_splits=5." . Falling back to random sampling.
 2024-07-03 19:13:49,353 - 3264817 - [mfeat-fourier.csv, DecisionTree, f4_sampling] - WARNING - [|L|=25] An error occurred while calculating f4: (UserWarning) "The least populated class in y has only 4 members, which is less than n_splits=5." . Falling back to random sampling.
+2024-07-04 02:30:01,433 - 3264817 - [mfeat-fourier.csv, DecisionTree, f4_sampling] - WARNING - [|L|=48] An error occurred while calculating f4: (UserWarning) "The least populated class in y has only 4 members, which is less than n_splits=5." . Falling back to random sampling.
+2024-07-04 06:27:34,982 - 3264817 - [mfeat-fourier.csv, DecisionTree, f4_sampling] - INFO - Processo finalizado
+2024-07-04 08:38:54,789 - 3264814 - [mushroom.csv, DecisionTree, f4_sampling] - INFO - Processo iniciado

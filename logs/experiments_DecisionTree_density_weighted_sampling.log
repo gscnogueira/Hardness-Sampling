@@ -109,3 +109,5 @@
 2024-07-03 18:13:36,507 - 3264734 - [ionosphere.csv, DecisionTree, density_weighted_sampling] - INFO - Processo finalizado
 2024-07-03 18:50:56,428 - 3264811 - [mfeat-fourier.csv, DecisionTree, density_weighted_sampling] - INFO - Processo iniciado
 2024-07-03 18:51:25,502 - 3264811 - [mfeat-fourier.csv, DecisionTree, density_weighted_sampling] - INFO - Processo finalizado
+2024-07-04 07:39:31,873 - 3264790 - [mushroom.csv, DecisionTree, density_weighted_sampling] - INFO - Processo iniciado
+2024-07-04 07:50:46,527 - 3264790 - [mushroom.csv, DecisionTree, density_weighted_sampling] - INFO - Processo finalizado
