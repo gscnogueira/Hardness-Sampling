@@ -9,12 +9,12 @@ from pyhard.measures import ClassificationMeasures
 from .random import random_sampling
 
 
-def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray) -> pd.DataFrame:
+def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray, prunning=False) -> pd.DataFrame:
     columns = [f'f_{i}' for i in range(X.shape[1])]
     X_df = pd.DataFrame(X, columns=columns)
     y_pred = learner.predict(X)
 
-    return ClassificationMeasures(X_df.assign(y=y_pred))
+    return ClassificationMeasures(X_df.assign(y=y_pred), ccp_alpha=(None if prunning else 0.1))
 
 
 def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
@@ -31,6 +31,12 @@ def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
 
                 measures_obj = __get_hardness_obj(learner, X)
                 results = getattr(measures_obj, measure)()
+
+                del measures_obj.calibrated_nb
+                del measures_obj.dist_matrix_gower
+                del measures_obj.indices_gower
+                del measures_obj.distances_gower
+                del measures_obj
 
         return multi_argmax(results, n_instances)
 
@@ -68,7 +74,7 @@ def disjunct_class_percentage_sampling(learner, X, n_instances):
 def tree_depth_pruned_sampling(learner, X, n_instances):
     """Implementation for the TD_P hardness measure."""
     return __generic_hardness_sampling(
-        learner, X, 'tree_depth_pruned', n_instances)
+        learner, X, 'tree_depth_pruned', n_instances, prunning=True)
 
 
 def tree_depth_unpruned_sampling(learner, X, n_instances):
