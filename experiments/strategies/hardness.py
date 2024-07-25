@@ -9,7 +9,7 @@ from pyhard.measures import ClassificationMeasures
 from .random import random_sampling
 
 
-def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray, prunning=False) -> pd.DataFrame:
+def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray, prunning) -> pd.DataFrame:
     columns = [f'f_{i}' for i in range(X.shape[1])]
     X_df = pd.DataFrame(X, columns=columns)
     y_pred = learner.predict(X)
@@ -18,7 +18,7 @@ def __get_hardness_obj(learner: ActiveLearner, X: np.ndarray, prunning=False) ->
 
 
 def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
-                                measure: str, n_instances=1):
+                                measure: str, n_instances=1, prunning=False):
     try:
 
         with warnings.catch_warnings():
@@ -29,7 +29,7 @@ def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
                 # Filtro para evitar warnings durante multiprocessing
                 warnings.filterwarnings("ignore", message=".*Loky-backed .*")
 
-                measures_obj = __get_hardness_obj(learner, X)
+                measures_obj = __get_hardness_obj(learner, X, prunning)
                 results = getattr(measures_obj, measure)()
 
                 del measures_obj.calibrated_nb
