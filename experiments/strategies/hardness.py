@@ -65,7 +65,7 @@ def disjunct_size_sampling(learner, X, n_instances):
         learner, X, 'disjunct_size', n_instances)
 
 
-def disjunct_class_percentage_sampling(learner, X, n_instances):
+def disjunct_class_percentage_sampling(learner, X, n_instances, prunning=True):
     """Implementation for the DCP hardness measure."""
     return __generic_hardness_sampling(
         learner, X, 'disjunct_class_percentage', n_instances)
