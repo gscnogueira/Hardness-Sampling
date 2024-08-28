@@ -1,108 +1,108 @@
-\begin{tabular}{rlll}
+\begin{tabular}{lll}
 \toprule
-Rank Pos. & Learner & Method & Group \\
+Avg. Rank Pos. & Method-Learner & Group \\
 \midrule
-25.65 & CART & TU & - \\
-26.18 & CART & Rnd & - \\
-27.09 & NB & Rnd & - \\
-27.88 & CART & N2I & Neighbor-based \\
-30.79 & NB & TU & - \\
-31.10 & NB & LSR & Neighbor-based \\
-31.81 & NB & N2I & Neighbor-based \\
-32.66 & CART & LSR & Neighbor-based \\
-33.77 & CART & kDN & Neighbor-based \\
-34.54 & CART & H & Neighbor-based \\
-35.23 & CART & CLD & Likelihood-based \\
-35.95 & NB & kDN & Neighbor-based \\
-36.21 & NB & TD$_U$ & Tree-based \\
-36.32 & CART & N1I & Neighbor-based \\
-36.32 & CART & LSCI & Neighbor-based \\
-36.44 & CART & CL & Likelihood-based \\
-36.46 & CART & U & Neighbor-based \\
-36.68 & CART & F4I & Feature-based \\
-37.53 & NB & LSCI & Neighbor-based \\
-38.60 & NB & H & Neighbor-based \\
-38.85 & NB & U & Neighbor-based \\
-39.83 & NB & CLD & Likelihood-based \\
-39.91 & NB & N1I & Neighbor-based \\
-40.11 & CART & MV & Class-Balance \\
-40.54 & CART & F2I & Feature-based \\
-40.61 & CART & CB & Class-Balance \\
-41.30 & CART & DS & Tree-based \\
-41.39 & NB & DS & Tree-based \\
-41.45 & NB & DCP & Tree-based \\
-41.57 & NB & TD$_P$ & Tree-based \\
-41.60 & CART & TD$_U$ & Tree-based \\
-41.65 & NB & F4I & Feature-based \\
-41.90 & NB & CL & Likelihood-based \\
-42.06 & CART & F3I & Feature-based \\
-42.31 & CART & F1I & Feature-based \\
-42.82 & CART & TD$_P$ & Tree-based \\
-43.27 & CART & DCP & Tree-based \\
-43.80 & 5NN & Rnd & - \\
-44.42 & 5NN & N2I & Neighbor-based \\
-45.26 & NB & F3I & Feature-based \\
-45.61 & NB & MS & - \\
-46.22 & CART & EER$_{ent}$ & - \\
-46.29 & NB & F2I & Feature-based \\
-46.58 & CART & ID & - \\
-47.81 & 5NN & TD$_U$ & Tree-based \\
-47.92 & NB & F1I & Feature-based \\
-47.95 & CART & MS & - \\
-48.24 & NB & MV & Class-Balance \\
+$25.65\pm23.38$ & \textbf{TU-CART}* & - \\
+$26.18\pm21.55$ & \underline{Rnd-CART} & - \\
+$27.09\pm24.72$ & \underline{\textbf{Rnd-NB}*} & - \\
+$27.88\pm24.38$ & N2I-CART & Neighbor-based \\
+$30.79\pm26.76$ & TU-NB & - \\
+$31.10\pm23.17$ & LSR-NB & Neighbor-based \\
+$31.81\pm25.08$ & N2I-NB & Neighbor-based \\
+$32.66\pm25.23$ & LSR-CART & Neighbor-based \\
+$33.77\pm24.11$ & kDN-CART & Neighbor-based \\
+$34.54\pm26.63$ & H-CART & Neighbor-based \\
+$35.23\pm24.80$ & CLD-CART & Likelihood-based \\
+$35.95\pm24.38$ & kDN-NB & Neighbor-based \\
+$36.21\pm23.32$ & TD$_U$-NB & Tree-based \\
+$36.32\pm23.38$ & N1I-CART & Neighbor-based \\
+$36.32\pm23.78$ & LSCI-CART & Neighbor-based \\
+$36.44\pm24.69$ & CL-CART & Likelihood-based \\
+$36.46\pm24.10$ & U-CART & Neighbor-based \\
+$36.68\pm23.21$ & F4I-CART & Feature-based \\
+$37.53\pm24.62$ & LSCI-NB & Neighbor-based \\
+$38.60\pm27.20$ & H-NB & Neighbor-based \\
+$38.85\pm25.74$ & U-NB & Neighbor-based \\
+$39.83\pm26.77$ & CLD-NB & Likelihood-based \\
+$39.91\pm25.02$ & N1I-NB & Neighbor-based \\
+$40.11\pm23.98$ & MV-CART & Class-Balance \\
+$40.54\pm24.53$ & F2I-CART & Feature-based \\
+$40.61\pm24.16$ & CB-CART & Class-Balance \\
+$41.30\pm22.85$ & DS-CART & Tree-based \\
+$41.39\pm25.92$ & DS-NB & Tree-based \\
+$41.45\pm24.42$ & DCP-NB & Tree-based \\
+$41.57\pm25.28$ & TD$_P$-NB & Tree-based \\
+$41.60\pm23.60$ & TD$_U$-CART & Tree-based \\
+$41.65\pm26.04$ & F4I-NB & Feature-based \\
+$41.90\pm27.03$ & CL-NB & Likelihood-based \\
+$42.06\pm25.86$ & F3I-CART & Feature-based \\
+$42.31\pm22.12$ & F1I-CART & Feature-based \\
+$42.82\pm24.23$ & TD$_P$-CART & Tree-based \\
+$43.27\pm24.73$ & DCP-CART & Tree-based \\
+$43.80\pm25.94$ & \underline{\textbf{Rnd-5NN}*} & - \\
+$44.42\pm24.46$ & N2I-5NN & Neighbor-based \\
+$45.26\pm26.54$ & F3I-NB & Feature-based \\
+$45.61\pm28.48$ & MS-NB & - \\
+$46.22\pm24.93$ & EER$_{ent}$-CART & - \\
+$46.29\pm25.38$ & F2I-NB & Feature-based \\
+$46.58\pm26.88$ & ID-CART & - \\
+$47.81\pm22.86$ & TD$_U$-5NN & Tree-based \\
+$47.92\pm26.87$ & F1I-NB & Feature-based \\
+$47.95\pm25.22$ & \textbf{MS-CART} & - \\
+$48.24\pm24.72$ & MV-NB & Class-Balance \\
 \bottomrule
 \end{tabular}
-\begin{tabular}{rlll}
+\begin{tabular}{lll}
 \toprule
-Rank Pos. & Learner & Method & Group \\
+Avg. Rank Pos. & Method-Learner & Group \\
 \midrule
-48.41 & NB & EER$_{ent}$ & - \\
-48.84 & SVM & N2I & Neighbor-based \\
-48.91 & NB & CB & Class-Balance \\
-49.47 & 5NN & MS & - \\
-50.64 & 5NN & CLD & Likelihood-based \\
-50.70 & 5NN & H & Neighbor-based \\
-51.17 & 5NN & LSR & Neighbor-based \\
-51.37 & SVM & MS & - \\
-51.38 & 5NN & kDN & Neighbor-based \\
-53.55 & 5NN & TD$_P$ & Tree-based \\
-53.60 & SVM & H & Neighbor-based \\
-53.61 & SVM & Rnd & - \\
-53.69 & SVM & CLD & Likelihood-based \\
-54.70 & NB & ID & - \\
-54.72 & 5NN & DS & Tree-based \\
-54.72 & SVM & TD$_U$ & Tree-based \\
-54.74 & 5NN & LSCI & Neighbor-based \\
-54.91 & SVM & LSR & Neighbor-based \\
-55.28 & SVM & kDN & Neighbor-based \\
-55.37 & 5NN & CL & Likelihood-based \\
-55.49 & 5NN & N1I & Neighbor-based \\
-55.66 & SVM & CL & Likelihood-based \\
-56.35 & 5NN & DCP & Tree-based \\
-57.22 & 5NN & U & Neighbor-based \\
-57.84 & 5NN & CB & Class-Balance \\
-58.02 & 5NN & F4I & Feature-based \\
-58.48 & SVM & DS & Tree-based \\
-58.50 & SVM & U & Neighbor-based \\
-58.76 & 5NN & TU & - \\
-58.90 & 5NN & MV & Class-Balance \\
-58.99 & SVM & TD$_P$ & Tree-based \\
-59.15 & SVM & N1I & Neighbor-based \\
-59.91 & SVM & LSCI & Neighbor-based \\
-60.82 & 5NN & F3I & Feature-based \\
-60.96 & 5NN & F1I & Feature-based \\
-61.33 & 5NN & F2I & Feature-based \\
-61.62 & SVM & DCP & Tree-based \\
-62.81 & 5NN & EER$_{ent}$ & - \\
-63.39 & SVM & EER$_{ent}$ & - \\
-63.64 & SVM & F4I & Feature-based \\
-64.36 & SVM & MV & Class-Balance \\
-65.08 & SVM & CB & Class-Balance \\
-65.10 & SVM & F2I & Feature-based \\
-65.92 & SVM & TU & - \\
-66.09 & SVM & F1I & Feature-based \\
-66.39 & SVM & F3I & Feature-based \\
-70.77 & SVM & ID & - \\
-74.76 & 5NN & ID & - \\
+$48.41\pm28.59$ & EER$_{ent}$-NB & - \\
+$48.84\pm29.75$ & \textbf{N2I-SVM}* & Neighbor-based \\
+$48.91\pm27.81$ & CB-NB & Class-Balance \\
+$49.47\pm24.52$ & MS-5NN & - \\
+$50.64\pm24.45$ & CLD-5NN & Likelihood-based \\
+$50.70\pm24.19$ & H-5NN & Neighbor-based \\
+$51.17\pm25.30$ & LSR-5NN & Neighbor-based \\
+$51.37\pm28.94$ & MS-SVM & - \\
+$51.38\pm24.06$ & kDN-5NN & Neighbor-based \\
+$53.55\pm20.69$ & TD$_P$-5NN & Tree-based \\
+$53.60\pm28.97$ & H-SVM & Neighbor-based \\
+$53.61\pm29.46$ & \underline{Rnd-SVM} & - \\
+$53.69\pm28.24$ & CLD-SVM & Likelihood-based \\
+$54.70\pm29.10$ & \textbf{ID-NB} & - \\
+$54.72\pm24.22$ & DS-5NN & Tree-based \\
+$54.72\pm28.00$ & TD$_U$-SVM & Tree-based \\
+$54.74\pm23.74$ & LSCI-5NN & Neighbor-based \\
+$54.91\pm30.20$ & LSR-SVM & Neighbor-based \\
+$55.28\pm30.61$ & kDN-SVM & Neighbor-based \\
+$55.37\pm24.39$ & CL-5NN & Likelihood-based \\
+$55.49\pm24.60$ & N1I-5NN & Neighbor-based \\
+$55.66\pm27.41$ & CL-SVM & Likelihood-based \\
+$56.35\pm24.13$ & DCP-5NN & Tree-based \\
+$57.22\pm23.59$ & U-5NN & Neighbor-based \\
+$57.84\pm22.37$ & CB-5NN & Class-Balance \\
+$58.02\pm23.81$ & F4I-5NN & Feature-based \\
+$58.48\pm28.20$ & DS-SVM & Tree-based \\
+$58.50\pm28.76$ & U-SVM & Neighbor-based \\
+$58.76\pm25.51$ & TU-5NN & - \\
+$58.90\pm23.22$ & MV-5NN & Class-Balance \\
+$58.99\pm26.12$ & TD$_P$-SVM & Tree-based \\
+$59.15\pm29.50$ & N1I-SVM & Neighbor-based \\
+$59.91\pm28.56$ & LSCI-SVM & Neighbor-based \\
+$60.82\pm23.26$ & F3I-5NN & Feature-based \\
+$60.96\pm23.84$ & F1I-5NN & Feature-based \\
+$61.33\pm23.91$ & F2I-5NN & Feature-based \\
+$61.62\pm28.10$ & DCP-SVM & Tree-based \\
+$62.81\pm22.86$ & EER$_{ent}$-5NN & - \\
+$63.39\pm24.84$ & EER$_{ent}$-SVM & - \\
+$63.64\pm26.11$ & F4I-SVM & Feature-based \\
+$64.36\pm25.60$ & MV-SVM & Class-Balance \\
+$65.08\pm24.00$ & CB-SVM & Class-Balance \\
+$65.10\pm23.50$ & F2I-SVM & Feature-based \\
+$65.92\pm21.27$ & TU-SVM & - \\
+$66.09\pm24.72$ & F1I-SVM & Feature-based \\
+$66.39\pm22.74$ & F3I-SVM & Feature-based \\
+$70.77\pm21.14$ & \textbf{ID-SVM} & - \\
+$74.76\pm21.44$ & \textbf{ID-5NN} & - \\
 \bottomrule
 \end{tabular}
