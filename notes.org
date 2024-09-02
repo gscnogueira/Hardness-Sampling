@@ -1,0 +1,51 @@
+#+TITLE: Artigo
+
+* DONE O que mais foi feito e o que é bom?
+CLOSED: [2024-09-02 seg 10:20]
+** Falar do campo Uncertantiy/Information Based
+- QBC (falar da desvantagem de vários modelos)
+- Expected Model Change
+- Variance Reduction
+- Falar que existem estratégias específicas para determinados modelos
+  - SVMHint
+- Estratégias que tentam estimar importancia das instâncias
+  - LAL tenta predizer a redução de erro potencial de uma instancia
+** Falar do problema da representativida (de novo?)
+- Falar que as estratégias existem, citar algumas (HS, e Kcenter, coreset(bench google))
+- Falar que, assim como as information-based elas tem limitações (dar uma olhada survey indiano)
+** Estratégias que consideram as duas coisas
+- Falar so ALBL, que tenta descobrir qual abordagem é melhor para um determinado problem
+- Falar de estratégias que tentam combinar essas duas coisas
+  - Estratégias mencionadas no survey do chines
+  - Se pa falar do BMDR, pq ela foi a melhor dessas
+  - Talvez tb do graph
+- Falar do método do MVAL (Maximizing Variance for Active Learning) tb 
+** Falar das comparações feitas
+- Falar sobre as conclusoes do trabalho do davi para a combinação de learner e estratégia
+- Falar so artigo que analisou o uso de diferentes medidas de incerteza para US (2022)
+- Falar sobre a comparação feita pelo chines, assim como benchmark dataset
+  - Falar que ele fez isso com o SVM
+  - Se pa
+- Comparação feita pelo cara da google deu que uncertanty é bonzao
+  - outros métodos que deram certo foram
+  - MCM (Representative Cluster Centers)
+  - Core-set
+  - BMDR 
+** Outras contribuições recentes que eu não sei classificar
+- Robust zero sum game propoe unified framework for selecting unlabeled examples and for updating the models to minimize a robust risk (mas parece que testaram só para classificadores lineares)
+- Falar de aplicação de meta-learning
+  - Falar de artigo de 2019
+  - Falar de artigo de 2024
+- Falar sobre Similarity Based AL (SBAL, 2024)
+* TODO Conclusão
+* TODO Falar de Pyhard
+* TODO Trocar ocorrencias de estratégia por método quando necessário
+* DONE Remover fillbetween dos plots
+CLOSED: [2024-09-02 seg 10:22]
+* DONE Ajustar posição legenda plot de grupos
+CLOSED: [2024-09-02 seg 11:11]
+* TODO Dar uma olhada na notação matemática feita nas Seções 2 e 3
+- verificar onde está a primeira ocorrencia do dataset $\mathcal{D}$
+- Lembrar que a função unitaria $\delta$ é citada na seção de HM, como indicator functions,  talvez seja bom unificar isso ai (mas talvez elas nao sejam a mesma coisa pq uma lida com uma parada mais flexivel)
+* 
+* TODO Talvez falar que esse artigo tem o objetivo de revisar as medidas classicas de active learning para justificar o tamanho da seção 2 kkk
