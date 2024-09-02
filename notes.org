@@ -45,7 +45,12 @@ CLOSED: [2024-09-02 seg 10:22]
 * DONE Ajustar posição legenda plot de grupos
 CLOSED: [2024-09-02 seg 11:11]
 * TODO Dar uma olhada na notação matemática feita nas Seções 2 e 3
-- verificar onde está a primeira ocorrencia do dataset $\mathcal{D}$
-- Lembrar que a função unitaria $\delta$ é citada na seção de HM, como indicator functions,  talvez seja bom unificar isso ai (mas talvez elas nao sejam a mesma coisa pq uma lida com uma parada mais flexivel)
-* 
+- [ ] verificar onde está a primeira ocorrencia do dataset $\mathcal{D}$
+- [ ] Lembrar que a função unitaria $\delta$ é citada na seção de HM, como indicator functions,  talvez seja bom unificar isso ai (mas talvez elas nao sejam a mesma coisa pq uma lida com uma parada mais flexivel)
+  - Na verdade eu substitui, mas talvez eles nao sejam a mesma coisa, verificar
+- [ ] existe uma variável chamada A na seção 2 e outra com esse mesmo nom e da Seção 3. Avaliar trocar o nome de pelo menos uma delas
+  - Foi usado de novo na seção 5.1
+- [ ] Dar uma olhada na notação apresentada na metodologia sobre algotimo e modelo e comparar com o da secao 3
 * TODO Talvez falar que esse artigo tem o objetivo de revisar as medidas classicas de active learning para justificar o tamanho da seção 2 kkk
+* TODO Dar uma olhada da capitalização das seções
+* TODO Olhar a captalização do nome dos grupos
