@@ -6,12 +6,12 @@ The repository structure is organized to facilitate reproducing the experiments 
 ## Repository Structure
 
 Below is an overview of the main folders and files in the repository:
-- [datasets](datasets/): contains the datasets used in the experiments.
-- [experiments](experiments/) Scripts and configurations for running experiments.
-- [logs](logs/) Log files generated during experiment runs.
-- [notebooks](notebooks/) Jupyter notebooks for exploratory analysis and interactive experiments
-- [results](results/) Results generated after running the experiments
-- [scripts](scripts/) Helper scripts for data preporcessing, experiment execution, etc.
+- [datasets](datasets/): The datasets used in the experiments.
+- [experiments](experiments/): Scripts and configurations for running experiments.
+- [logs](logs/): Log files generated during experiment runs.
+- [notebooks](notebooks/): Jupyter notebooks for exploratory analysis and interactive experiments
+- [results](results/): Results generated after running the experiments
+- [scripts](scripts/): Helper scripts for data preporcessing, experiment execution, etc.
 
 ## Requirements
 
