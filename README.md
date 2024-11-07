@@ -67,7 +67,7 @@ Initially, it was proposed to have one log file per configuration, following a n
 However, this approach had to be changed due to concurrency issues, so the current implementation stores all logs in the `logs/experiments.log` file.
 Nevertheless, the logs of previously run experiments have been preserved to avoid redundant work.
 
-## Jupyter notebooks
+## Jupyter Notebooks
 
 The jupyter notebooks in the [`notebooks/`](notebooks) directory provide a graphical analysis of both the results and the logs generated during the experiments.
 For convenience, a different virtual environment was used for generating the notebooks than the one used for the experiments.
@@ -76,6 +76,10 @@ Thus, the necessary packages for running the notebooks can be installed via the 
 ```bash
 pip install -r notebooks/requirements.txt
 ```
+
+## Helper Scripts
+
+The files in the [`scripts/`](scripts/) directory are auxiliary scripts designed to facilitate tasks such as selecting the datasets used, converting them from ARFF to CSV, and generating LaTeX tables from the results.
 
 ## Credits
 
