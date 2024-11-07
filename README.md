@@ -59,7 +59,7 @@ The results for a given configuration tested are stored in a file within the `re
 Each CSV file contains 100 rows and 5 columns.
 Thus, a cell located in row i and column j represents the Cohen's kappa coefficient obtained by the configuration in the i-th iteration of the active learning process, using the j-th fold of cross-validation.
 
-# Logs
+## Logs
 
 
 The log files are located in the `logs/` directory and are used to analyze the behavior of the strategies during the experiments.
