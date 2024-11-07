@@ -69,7 +69,13 @@ Nevertheless, the logs of previously run experiments have been preserved to avoi
 
 ## Jupyter notebooks
 
-Refer to the notebooks in [`notebooks/`](notebooks) for detailed analysis of the results and logs generated during the experiments.
+The jupyter notebooks in the [`notebooks/`](notebooks) directory provide a graphical analysis of both the results and the logs generated during the experiments.
+For convenience, a different virtual environment was used for generating the notebooks than the one used for the experiments.
+Thus, the necessary packages for running the notebooks can be installed via the `notebooks/requirements.txt` file:
+
+```bash
+pip install -r notebooks/requirements.txt
+```
 
 ## Credits
 
