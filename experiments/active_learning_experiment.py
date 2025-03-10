@@ -60,6 +60,9 @@ class ActiveLearningExperiment:
         l_X_pool = X_train.loc[l_index].values
         l_y_pool = y_train.loc[l_index].values
 
+        print(l_X_pool.shape)
+        print(l_X_pool)
+        print('-'*50, 'FOLD','-'*50 )
         u_X_pool = X_train.drop(l_index)
         u_y_pool = y_train.drop(l_index)
 
