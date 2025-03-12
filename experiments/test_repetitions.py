@@ -31,9 +31,12 @@ if __name__ == '__main__':
     dataset_file = '../datasets/csv/statlog-image-segmentation.csv'
 
     # Dataset que vai muito mal:
-    # dataset_file = '../datasets/csv/ozone-eighthr.csv'
+    dataset_file = '../datasets/csv/ozone-eighthr.csv'
 
     data = pd.read_csv(dataset_file)
+
+    print(data)
+    exit()
 
     exp = ActiveLearningExperiment(data, n_queries=100, random_state=42)
 
