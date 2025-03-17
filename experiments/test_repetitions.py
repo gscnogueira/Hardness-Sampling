@@ -10,7 +10,7 @@ from active_learning_experiment import ActiveLearningExperiment
 from strategies.random import random_sampling
 
 
-N_EXECS = 20
+N_EXECS = 5
 query_strategy = margin_sampling
 
 
@@ -31,11 +31,11 @@ if __name__ == '__main__':
     dataset_file = '../datasets/csv/statlog-image-segmentation.csv'
 
     # Dataset que vai muito mal:
-    # dataset_file = '../datasets/csv/ozone-eighthr.csv'
+    dataset_file = '../datasets/csv/ozone-eighthr.csv'
 
     data = pd.read_csv(dataset_file)
 
-    exp = ActiveLearningExperiment(data, n_queries=100, random_state=42)
+    exp = ActiveLearningExperiment(data, n_queries=100, random_state=0)
 
     learner = partial(SVC, probability=True)
 
