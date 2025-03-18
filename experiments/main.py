@@ -56,7 +56,6 @@ def run_experiments(args, n_queries=100, initial_labeled_size=5,
 
     dataset_name, _ = os.path.splitext(dataset_file)
 
-
     # Muda o nome do processo
     process = current_process()
     process.name = f"({dataset_name}, {estimator_name}, {query_strategy.__name__})"
@@ -126,6 +125,8 @@ if __name__ == '__main__':
 
     main_logger.info('Iniciando experimentos')
 
+    # TODO: verificar RANDOM_STATE para garantir que a pool de dados
+    # inicial dos experimentos é a mesma
     with Pool(config.N_WORKERS) as p:
 
         run_experiments_partial = partial(run_experiments,

@@ -32,6 +32,7 @@ def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
                 measures_obj = __get_hardness_obj(learner, X, prunning)
                 results = getattr(measures_obj, measure)()
 
+                # Tentativa de liberar espaço para o calculo das medidas
                 del measures_obj.calibrated_nb
                 del measures_obj.dist_matrix_gower
                 del measures_obj.indices_gower

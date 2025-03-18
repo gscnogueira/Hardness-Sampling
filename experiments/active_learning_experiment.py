@@ -1,5 +1,7 @@
 from functools import partial
 import warnings
+import time
+import os
 
 
 from modAL.models import ActiveLearner
@@ -9,59 +11,71 @@ from sklearn.base import BaseEstimator
 from sklearn.metrics import cohen_kappa_score
 import numpy as np
 import pandas as pd
+import sqlite3
 
 
 class ActiveLearningExperiment:
-    def __init__(self, data: pd.DataFrame, n_queries: int,
+    def __init__(self, csv_file, result_db, n_queries: int,
                  batch_size=1, initial_labeled_size: int = 5,
                  random_state=None):
 
+        self.dataset_name = os.path.split(csv_file)[-1]
         self.batch_size = batch_size
         self.n_queries = n_queries
-        self.data = data
         self.random_state = random_state
         self.initial_labeled_size = initial_labeled_size
+        self.rng = np.random.default_rng(random_state)
 
-        self.X, self.y = data.iloc[:, :-1], data.iloc[:, -1]
+        self.conn = sqlite3.connect(result_db, check_same_thread=False)
+
+        data = pd.read_csv(csv_file)
+
+        self.X = data.iloc[:, :-1].to_numpy()
+        self.y = data.iloc[:, -1].to_numpy()
 
     def run_strategy(self, estimator: BaseEstimator,
-                     query_strategy, n_splits=5) -> pd.DataFrame:
+                     query_strategy, n_runs=1, n_folds=5) -> pd.DataFrame:
 
-        skf = StratifiedKFold(n_splits=n_splits,
+        skf = StratifiedKFold(n_splits=n_folds,
                               shuffle=True,
                               random_state=self.random_state)
-        results = [
-            self.__run_fold(estimator, query_strategy, train_index, test_index)
-            for train_index, test_index in skf.split(self.X, self.y)
-        ]
 
-        return pd.DataFrame(results).T
+        for run_number in range(n_runs):
+            for fold_number, (train_index, test_index) in enumerate(skf.split(self.X, self.y)):
+                print(run_number, fold_number)
+                self.__run_fold(estimator, query_strategy, train_index,
+                                test_index, run_number, fold_number)
 
     def __run_fold(self, estimator: BaseEstimator, query_strategy,
-                   train_index, test_index):
+                   train_index, test_index, run_number, fold_number):
 
-        X_train, y_train = self.X.iloc[train_index], self.y.iloc[train_index]
-        X_test, y_test = self.X.iloc[test_index], self.y.iloc[test_index]
+        X_train, y_train = self.X[train_index], self.y[train_index]
+        X_test, y_test = self.X[test_index], self.y[test_index]
 
         # Seleciona uma instância de cada classe para serem rotuladas
-        groups = y_train.groupby(y_train)
-        l_index = groups.sample(1, random_state=self.random_state).index
+        unique_classes = np.unique(y_train)
+        l_index = []
+        query_strategy_name = query_strategy.__name__
+
+        for cls in unique_classes:
+            cls_idxs = np.where(y_train == cls)[0]
+
+            random_idx = self.rng.choice(cls_idxs)
+
+            l_index.append(random_idx)
 
         # Se houver um numero de instâncias rotuladas menor que o
         # necessário, mais instâncias até que esse número seja
         # atingido
         if (n_missing := self.initial_labeled_size - len(l_index)) > 0:
+            additional_index = self.rng.choice(y_train, size=n_missing)
+            l_index.extend(additional_index)
 
-            new_index = y_train.drop(l_index).sample(
-                n_missing, random_state=self.random_state).index
+        l_X_pool = X_train[l_index]
+        l_y_pool = y_train[l_index]
 
-            l_index = l_index.append(new_index)
-
-        l_X_pool = X_train.loc[l_index].values
-        l_y_pool = y_train.loc[l_index].values
-
-        u_X_pool = X_train.drop(l_index)
-        u_y_pool = y_train.drop(l_index)
+        u_X_pool = np.delete(X_train, l_index, 0)
+        u_y_pool = np.delete(y_train, l_index)
 
         args = dict()
         args['estimator'] = estimator()
@@ -70,27 +84,98 @@ class ActiveLearningExperiment:
         args['query_strategy'] = partial(query_strategy,
                                          n_instances=self.batch_size)
 
-        scores = []
         learner = ActiveLearner(**args)
+        scores = []
+
+        # Afere desempenho inicial do modelo
+        initial_y_pred = learner.predict(X_test)
+        initial_score = cohen_kappa_score(y_test, initial_y_pred)
+        scores.append(initial_score)
 
         # Active Learning Loop
-        for idx in range(self.n_queries):
+        for query_number in range(self.n_queries):
 
             if np.size(u_y_pool) <= 0:
                 break
 
-            query_index, _ = learner.query(u_X_pool.values)
+            query_index, _ = learner.query(u_X_pool)
+            execution_time = time.time()
 
-            learner.teach(X=u_X_pool.iloc[query_index].values,
-                          y=u_y_pool.iloc[query_index].values)
+            learner.teach(X=u_X_pool[query_index], y=u_y_pool[query_index])
 
-            query_index = u_X_pool.index[query_index]
-            u_X_pool = u_X_pool.drop(query_index)
-            u_y_pool = u_y_pool.drop(query_index)
+            u_X_pool = np.delete(u_X_pool, query_index, 0)
+            u_y_pool = np.delete(u_y_pool, query_index)
 
-            y_pred = learner.predict(X_test.values)
+            y_pred = learner.predict(X_test)
+            kappa_score = cohen_kappa_score(y_test, y_pred)
 
-            score = cohen_kappa_score(y_test, y_pred)
-            scores.append(score)
+            scores.append(kappa_score)
+
+            db_row = (self.dataset_name,
+                      estimator.__name__,
+                      query_strategy_name,
+                      run_number,
+                      fold_number,
+                      query_number,
+                      kappa_score,
+                      execution_time)
+
+            self.__write_results(db_row)
 
         return scores
+
+    def __write_results(self,db_row):
+        cursor = self.conn.cursor()
+
+        cursor.execute("""
+        INSERT INTO results
+        (dataset, classifier, method, run, fold, query, kappa, execution_time) 
+        VALUES (?, ? , ?, ?, ?, ?, ?,?)
+        """, db_row)
+
+        self.conn.commit()
+
+
+def setup_database(db_file):
+    conn = sqlite3.connect(db_file)
+    cursor = conn.cursor()
+
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS results (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    dataset TEXT NOT NULL,
+    classifier TEXT NOT NULL,
+    method TEXT NOT NULL,
+    run INTEGER NOT NULL,
+    fold INTEGER NOT NULL,
+    query INTEGER NOT NULL,
+    kappa REAL NOT NULL,
+    execution_time REAL NOT NULL)
+    ''')
+
+    conn.close()
+
+if __name__ == '__main__':
+
+    from sklearn.svm import SVC
+    from strategies.random import random_sampling
+    from strategies.hardness import intra_extra_ratio_sampling
+    from modAL.uncertainty import margin_sampling
+
+    database_file = "results.db"
+
+    setup_database(database_file)
+
+    exp = ActiveLearningExperiment('../datasets/csv/horse-colic-surgical.csv',
+                                   result_db=database_file,
+                                   n_queries=200,
+                                   initial_labeled_size=5,
+                                   random_state=42)
+
+    estimator=partial(SVC, probability=True)
+    estimator.__name__ = SVC.__name__
+    scores = exp.run_strategy(estimator=estimator,
+                              query_strategy=margin_sampling,
+                              n_runs=2)
+
+    print(scores)
