@@ -25,7 +25,7 @@ def logger_process():
     # handler = logging.StreamHandler()
 
     # Configura arquivo de logging
-    time_stamp = datetime.now().strftime("%Y-%m-d_%H-%M%S")
+    time_stamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
     log_file_name = os.path.join(config.LOG_DIR,
                                  f'run_{time_stamp}.log')
     handler = logging.FileHandler(log_file_name)
