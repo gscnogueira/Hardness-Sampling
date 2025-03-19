@@ -1,4 +1,5 @@
 *~
 venv/
+experiments/logs/
 .python-version
 __pycache__
