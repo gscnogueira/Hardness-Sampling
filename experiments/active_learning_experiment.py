@@ -68,7 +68,6 @@ class ActiveLearningExperiment:
                 self.__run_fold(self.estimator, self.query_strategy,
                                 train_index, test_index,
                                 run_number, fold_number)
-            print("-------------------------")
 
     def __run_fold(self, estimator: BaseEstimator, query_strategy,
                    train_index, test_index, run_number, fold_number):
@@ -81,36 +80,28 @@ class ActiveLearningExperiment:
         unique_classes = np.unique(y_train)
         l_index = []
 
+        rng = np.random.default_rng(seed=self.random_state + fold_number)
+
         for cls in unique_classes:
             cls_idxs = np.where(y_train == cls)[0]
-
-            rng = np.random.default_rng(seed=self.random_state)
             random_idx = rng.choice(cls_idxs)
-
             l_index.append(random_idx)
-
 
         # Se houver um numero de instâncias rotuladas menor que o
         # necessário, mais instâncias até que esse número seja
         # atingido
         if (n_missing := self.initial_labeled_size - len(l_index)) > 0:
-            not_selected_mask = np.ones(len(y_train), dtype=bool)
-            not_selected_mask[l_index] = False
 
-            to_be_selected = y_train[not_selected_mask]
+            # Indices dos dados que ainda não foram slecionados para
+            # rotulação
+            missing_indexes = np.setdiff1d(np.arange(y_train.size),
+                                           l_index)
 
-            selected_index = rng.choice(len(to_be_selected),
-                                        size=n_missing, replace=False)
-
-            import pdb; pdb.set_trace()
-            selected_elems = to_be_selected[selected_index]
-
-            original_index = np.where(not_selected_mask)[0]
-            original_index[indi]
+            additional_index = rng.choice(missing_indexes,
+                                          size=n_missing,
+                                          replace=False)
 
             l_index.extend(additional_index)
-
-        print(l_index)
 
         l_X_pool = X_train[l_index]
         l_y_pool = y_train[l_index]
@@ -201,7 +192,7 @@ if __name__ == '__main__':
                                    n_runs=5,
                                    n_folds=5,
                                    results_dir="../results",
-                                   random_state=42)
+                                   random_state=12)
 
     exp.run_strategy()
 

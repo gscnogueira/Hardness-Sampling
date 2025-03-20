@@ -49,7 +49,7 @@ SAMPLING_METHODS = [
 #     ih.f3_sampling,
 #     ih.f4_sampling,
 #     ih.harmfulness_sampling,
-#     ih.intra_extra_ratio_sampling,
+    # ih.intra_extra_ratio_sampling,
 #     ih.k_disagreeing_neighbors_sampling,
 #     ih.local_set_cardinality_sampling,
 #     ih.ls_radius_sampling,
@@ -65,7 +65,7 @@ ARFF_DIR = '../datasets/arff/'
 CSV_DIR = '../datasets/csv'
 
 # -----------MULTIPROCESSING----------------------
-N_WORKERS = 8
+N_WORKERS = 6
 
 # -----------LOGGING-----------------------------
 LOG_DIR = 'logs/'

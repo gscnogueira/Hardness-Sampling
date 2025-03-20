@@ -1,16 +1,15 @@
-# from os import environ; environ['OMP_NUM_THREADS'] = '1'
+from os import environ; environ['OMP_NUM_THREADS'] = '1'
 
-import os
 from datetime import datetime
-import sys
 from functools import partial, reduce
-import logging
-import warnings
+from itertools import product
 from multiprocessing import Pool, Process
 from multiprocessing import Queue, current_process
-from itertools import product
+import logging
+import os
+import traceback
+import warnings
 
-import pandas as pd
 from tqdm import tqdm
 
 from active_learning_experiment import ActiveLearningExperiment
@@ -48,7 +47,7 @@ def logger_process():
 def run_experiments(args, n_queries,
                     results_dir,
                     initial_labeled_size=None,
-                    random_state=None, n_runs=1, n_folds=5):
+                    random_state=42, n_runs=1, n_folds=5):
 
     logger = logging.getLogger()
 
@@ -92,8 +91,8 @@ def run_experiments(args, n_queries,
         try:
             exp.run_strategy()
 
-        except Exception as e:
-            logger.error(str(e))
+        except Exception:
+            logger.error(traceback.format_exc())
             return
 
     logger.info("Processo finalizado")
@@ -127,8 +126,6 @@ if __name__ == '__main__':
 
     args = (datasets, config.CLASSIFIER_DICT, config.SAMPLING_METHODS)
 
-    # TODO: verificar RANDOM_STATE para garantir que a pool de dados
-    # inicial dos experimentos é a mesma
     with Pool(config.N_WORKERS) as p:
 
         run_experiments_partial = partial(run_experiments,
