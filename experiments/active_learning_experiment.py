@@ -143,7 +143,11 @@ class ActiveLearningExperiment:
             if np.size(u_y_pool) <= 0:
                 break
 
-            query_index, _ = learner.query(u_X_pool)
+            # Verifica se pool saturou número de queries
+            query_index = (learner.query(u_X_pool)[0]
+                           if len(u_X_pool) > self.batch_size
+                           else np.arange(len(u_X_pool)))
+
             learner.teach(X=u_X_pool[query_index], y=u_y_pool[query_index])
 
             u_X_pool = np.delete(u_X_pool, query_index, 0)
@@ -180,19 +184,20 @@ if __name__ == '__main__':
     from sklearn.svm import SVC
     from strategies.random import random_sampling
     from strategies.hardness import intra_extra_ratio_sampling
+    from strategies.expected_error import expected_error_reduction
     from modAL.uncertainty import margin_sampling
+    from strategies import hardness as h
 
     estimator=partial(SVC, probability=True)
     estimator.__name__ = SVC.__name__
 
-    exp = ActiveLearningExperiment('../datasets/csv/horse-colic-surgical.csv',
+    exp = ActiveLearningExperiment('../datasets/csv/iris.csv',
                                    estimator=estimator,
-                                   query_strategy=random_sampling,
+                                   query_strategy=h.tree_depth_pruned_sampling,
                                    n_queries=200,
-                                   n_runs=5,
+                                   n_runs=1,
                                    n_folds=5,
-                                   results_dir="../results",
+                                   results_dir=".",
                                    random_state=12)
 
     exp.run_strategy()
-

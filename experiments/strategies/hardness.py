@@ -43,6 +43,8 @@ def __generic_hardness_sampling(learner: ActiveLearner, X: np.ndarray,
 
     except Exception as e:
 
+        raise e
+
         warnings.warn(
             f'[|L|={learner.X_training.shape[0]}] '
             f'An error occurred while calculating {measure}: '
