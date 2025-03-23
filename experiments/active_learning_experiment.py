@@ -32,6 +32,7 @@ class ActiveLearningExperiment:
 
     def __post_init__(self):
 
+        os.environ["PYHARD_SEED"] = str(self.random_state)
         # Gerador aleatório para reproducibilidade dos resultados
         self.rng = np.random.default_rng(seed=self.random_state)
 
@@ -193,11 +194,11 @@ if __name__ == '__main__':
 
     exp = ActiveLearningExperiment('../datasets/csv/iris.csv',
                                    estimator=estimator,
-                                   query_strategy=h.tree_depth_pruned_sampling,
-                                   n_queries=200,
+                                   query_strategy=h.disjunct_class_percentage_sampling,
+                                   n_queries=100,
                                    n_runs=1,
                                    n_folds=5,
                                    results_dir=".",
-                                   random_state=12)
+                                   random_state=42)
 
     exp.run_strategy()
