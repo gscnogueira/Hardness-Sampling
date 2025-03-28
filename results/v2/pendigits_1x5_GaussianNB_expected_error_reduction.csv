@@ -1,0 +1,26 @@
+time,dataset,classifier,method,run,fold,query,kappa
+2025-03-27 22:49:05.562651,pendigits,GaussianNB,expected_error_reduction,0,0,0,0.4466050477218556
+2025-03-27 23:09:52.623370,pendigits,GaussianNB,expected_error_reduction,0,0,1,0.0
+2025-03-27 23:30:05.397587,pendigits,GaussianNB,expected_error_reduction,0,0,2,0.017459992807078772
+2025-03-27 23:50:41.962703,pendigits,GaussianNB,expected_error_reduction,0,0,3,0.017459992807078772
+2025-03-28 00:15:25.516669,pendigits,GaussianNB,expected_error_reduction,0,0,4,0.017459992807078772
+2025-03-28 00:58:33.509971,pendigits,GaussianNB,expected_error_reduction,0,0,5,0.017459992807078772
+2025-03-28 01:38:22.592403,pendigits,GaussianNB,expected_error_reduction,0,0,6,0.017459992807078772
+2025-03-28 02:22:03.040650,pendigits,GaussianNB,expected_error_reduction,0,0,7,0.017459992807078772
+2025-03-28 03:03:48.928614,pendigits,GaussianNB,expected_error_reduction,0,0,8,0.017459992807078772
+2025-03-28 03:40:34.250601,pendigits,GaussianNB,expected_error_reduction,0,0,9,0.017459992807078772
+2025-03-28 04:10:40.285089,pendigits,GaussianNB,expected_error_reduction,0,0,10,0.017459992807078772
+2025-03-28 04:38:41.589088,pendigits,GaussianNB,expected_error_reduction,0,0,11,0.017459992807078772
+2025-03-28 05:06:16.169443,pendigits,GaussianNB,expected_error_reduction,0,0,12,0.017459992807078772
+2025-03-28 05:33:32.016742,pendigits,GaussianNB,expected_error_reduction,0,0,13,0.017459992807078772
+2025-03-28 05:58:35.653808,pendigits,GaussianNB,expected_error_reduction,0,0,14,0.017459992807078772
+2025-03-28 06:23:58.643667,pendigits,GaussianNB,expected_error_reduction,0,0,15,0.017459992807078772
+2025-03-28 06:46:33.201248,pendigits,GaussianNB,expected_error_reduction,0,0,16,0.017459992807078772
+2025-03-28 07:06:28.566693,pendigits,GaussianNB,expected_error_reduction,0,0,17,0.017459992807078772
+2025-03-28 07:26:30.900146,pendigits,GaussianNB,expected_error_reduction,0,0,18,0.017459992807078772
+2025-03-28 07:46:03.779935,pendigits,GaussianNB,expected_error_reduction,0,0,19,0.017459992807078772
+2025-03-28 08:05:42.372234,pendigits,GaussianNB,expected_error_reduction,0,0,20,0.017459992807078772
+2025-03-28 08:33:26.300843,pendigits,GaussianNB,expected_error_reduction,0,0,21,0.07732802191919219
+2025-03-28 09:10:24.119196,pendigits,GaussianNB,expected_error_reduction,0,0,22,0.10399193404475537
+2025-03-28 09:46:54.939115,pendigits,GaussianNB,expected_error_reduction,0,0,23,0.1294524864449993
+2025-03-28 10:21:35.821456,pendigits,GaussianNB,expected_error_reduction,0,0,24,0.16065129906951403

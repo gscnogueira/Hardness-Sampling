@@ -1,0 +1,23 @@
+time,dataset,classifier,method,run,fold,query,kappa
+2025-03-28 10:43:02.075486,ringnorm,DecisionTree,ls_radius_sampling,0,0,0,0.1994998249020461
+2025-03-28 10:43:36.457348,ringnorm,DecisionTree,ls_radius_sampling,0,0,1,-0.11901148452434795
+2025-03-28 10:44:11.138503,ringnorm,DecisionTree,ls_radius_sampling,0,0,2,0.06332525907443487
+2025-03-28 10:44:44.835746,ringnorm,DecisionTree,ls_radius_sampling,0,0,3,0.20161907365647513
+2025-03-28 10:45:16.071502,ringnorm,DecisionTree,ls_radius_sampling,0,0,4,0.21078910076141932
+2025-03-28 10:45:49.138079,ringnorm,DecisionTree,ls_radius_sampling,0,0,5,0.21610169491525422
+2025-03-28 10:46:23.268421,ringnorm,DecisionTree,ls_radius_sampling,0,0,6,0.21610169491525422
+2025-03-28 10:46:56.745765,ringnorm,DecisionTree,ls_radius_sampling,0,0,7,0.2118740394026255
+2025-03-28 10:47:28.673402,ringnorm,DecisionTree,ls_radius_sampling,0,0,8,0.2118740394026255
+2025-03-28 10:48:00.740943,ringnorm,DecisionTree,ls_radius_sampling,0,0,9,0.2118740394026255
+2025-03-28 10:48:32.489686,ringnorm,DecisionTree,ls_radius_sampling,0,0,10,0.2118740394026255
+2025-03-28 10:49:07.530993,ringnorm,DecisionTree,ls_radius_sampling,0,0,11,0.2118740394026255
+2025-03-28 10:49:39.655592,ringnorm,DecisionTree,ls_radius_sampling,0,0,12,0.2118740394026255
+2025-03-28 10:50:11.951723,ringnorm,DecisionTree,ls_radius_sampling,0,0,13,0.2118740394026255
+2025-03-28 10:50:44.621664,ringnorm,DecisionTree,ls_radius_sampling,0,0,14,0.2118740394026255
+2025-03-28 10:51:19.539012,ringnorm,DecisionTree,ls_radius_sampling,0,0,15,0.2118740394026255
+2025-03-28 10:51:51.660304,ringnorm,DecisionTree,ls_radius_sampling,0,0,16,0.21310138624626251
+2025-03-28 10:52:25.465328,ringnorm,DecisionTree,ls_radius_sampling,0,0,17,0.2074817310412479
+2025-03-28 10:52:56.858082,ringnorm,DecisionTree,ls_radius_sampling,0,0,18,0.2087495384004865
+2025-03-28 10:53:28.464005,ringnorm,DecisionTree,ls_radius_sampling,0,0,19,0.2087495384004865
+2025-03-28 10:54:02.750616,ringnorm,DecisionTree,ls_radius_sampling,0,0,20,0.2087495384004865
+2025-03-28 10:54:36.562098,ringnorm,DecisionTree,ls_radius_sampling,0,0,21,0.2087495384004865

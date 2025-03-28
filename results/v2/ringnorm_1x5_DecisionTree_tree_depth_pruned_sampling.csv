@@ -1,0 +1,3 @@
+time,dataset,classifier,method,run,fold,query,kappa
+2025-03-28 10:54:11.266370,ringnorm,DecisionTree,tree_depth_pruned_sampling,0,0,0,-0.08148881502958316
+2025-03-28 10:54:29.615304,ringnorm,DecisionTree,tree_depth_pruned_sampling,0,0,1,-0.21343966417237392

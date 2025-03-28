@@ -498,3 +498,9 @@ time,dataset,classifier,method,run,fold,query,kappa
 2025-03-24 10:45:58.745824,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,92,0.0
 2025-03-24 10:47:05.413253,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,93,0.0
 2025-03-24 10:48:11.789344,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,94,0.0
+2025-03-24 10:49:18.642699,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,95,0.0
+2025-03-24 10:50:24.414624,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,96,0.0
+2025-03-24 10:51:31.846692,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,97,0.0
+2025-03-24 10:52:39.182541,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,98,0.0
+2025-03-24 10:53:46.541598,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,99,0.0
+2025-03-24 10:54:52.843552,eeg-eye-state,SVC,local_set_cardinality_sampling,0,4,100,0.0

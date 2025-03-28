@@ -1,0 +1,13 @@
+time,dataset,classifier,method,run,fold,query,kappa
+2025-03-27 17:32:21.290067,pendigits,SVC,expected_error_reduction,0,0,0,0.4466050477218556
+2025-03-27 18:40:16.636857,pendigits,SVC,expected_error_reduction,0,0,1,0.4546283888614344
+2025-03-27 19:46:38.658920,pendigits,SVC,expected_error_reduction,0,0,2,0.4499486851253076
+2025-03-27 20:55:40.155295,pendigits,SVC,expected_error_reduction,0,0,3,0.44889410253161866
+2025-03-27 22:06:46.817926,pendigits,SVC,expected_error_reduction,0,0,4,0.44333542715878616
+2025-03-27 23:19:34.170760,pendigits,SVC,expected_error_reduction,0,0,5,0.441313673162653
+2025-03-28 00:57:05.881618,pendigits,SVC,expected_error_reduction,0,0,6,0.44131213170704453
+2025-03-28 03:11:15.514572,pendigits,SVC,expected_error_reduction,0,0,7,0.43878735819028014
+2025-03-28 05:13:37.511028,pendigits,SVC,expected_error_reduction,0,0,8,0.43524869876150696
+2025-03-28 06:54:52.291317,pendigits,SVC,expected_error_reduction,0,0,9,0.4337302166668009
+2025-03-28 08:09:03.429030,pendigits,SVC,expected_error_reduction,0,0,10,0.4296771713323839
+2025-03-28 10:19:33.072669,pendigits,SVC,expected_error_reduction,0,0,11,0.42967992508155983
