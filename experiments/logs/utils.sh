@@ -33,34 +33,47 @@ finished(){
 }
 
 log_report(){
-    local log_file=$1
-    # Cores ANSI (para terminal)
-    local RED='\033[0;31m'
-    local GREEN='\033[0;32m'
-    local BLUE='\033[0;34m'
-    local NC='\033[0m' # No Color
+	local log_file=$1
+    	# Cores ANSI (para terminal)
+    	local RED='\033[0;31m'
+    	local GREEN='\033[0;32m'
+    	local BLUE='\033[0;34m'
+	local YELLOW='\e[0;33m'
+   	local NC='\033[0m' # No Color
     
-    # Função para criar cabeçalho centralizado
-    print_header() {
-        local title=$1
-        local color=$2
-        local width=60
-        local padding=$(( ($width - ${#title} - 2) / 2 ))
-        printf "${color}"
-	printf "$title:\n"
-        printf "${NC}"
-    }
+    	# Função para criar cabeçalho centralizado
+    	print_header() {
+        	local title=$1
+        	local color=$2
+        	local width=60
+        	local padding=$(( ($width - ${#title} - 2) / 2 ))
+        	printf "${color}"
+		printf "$title"
+        	printf "${NC}"
+    	}
 
-    # Relatório de processos running
-    print_header " RUNNING " "$BLUE"
-    running "$log_file" | column 
+    	# Relatório de processos running
+    	print_header "RUNNING:\n" "$BLUE"
+    	running "$log_file" | column 
     
-    # Espaçamento entre seções
-    echo -e "\n"
+    	# Espaçamento entre seções
+    	echo -e "\n"
     
-    # Relatório de processos finished
-    print_header " FINISHED " "$GREEN"
-    finished "$log_file" | column
+    	# Relatório de processos finished
+    	print_header "FINISHED:\n" "$GREEN"
+    	finished "$log_file" | column
+	echo -e "\n"
+	
+
+	# Listando errors
+	print_header "ERRORS: " "$RED"
+	grep ERROR "$log_file" |  wc -l
+
+	# Listando warnings
+	print_header "WARNINGS: " "$YELLOW"
+	grep WARNING "$log_file" |  wc -l
+
+
     
 }
 
