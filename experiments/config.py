@@ -27,17 +27,17 @@ RESULTS_DIR = '../results/v2'
 
 CLASSIFIER_DICT = {
     "SVC": partial(SVC, probability=True),
-    # "5NN": KNeighborsClassifier,
-    # "DecisionTree": DecisionTreeClassifier,
-    # "GaussianNB": GaussianNB,
+    "5NN": KNeighborsClassifier,
+    "DecisionTree": DecisionTreeClassifier,
+    "GaussianNB": GaussianNB,
 }
 
 SAMPLING_METHODS = [
-    # random_sampling,
-    # margin_sampling,
-    # density_weighted_sampling,
-    # training_utility_sampling,
-    # expected_error_reduction,
+    random_sampling,
+    margin_sampling,
+    density_weighted_sampling,
+    training_utility_sampling,
+    expected_error_reduction,
     ih.borderline_points_sampling,
     ih.class_balance_sampling,
     ih.class_likelihood_sampling,
@@ -63,7 +63,7 @@ ARFF_DIR = '../datasets/arff/'
 CSV_DIR = '../datasets/csv'
 
 # -----------MULTIPROCESSING----------------------
-N_WORKERS = 4
+N_WORKERS = 48
 
 # -----------LOGGING-----------------------------
 LOG_DIR = 'logs/'
