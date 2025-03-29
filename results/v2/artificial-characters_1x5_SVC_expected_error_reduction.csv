@@ -76,3 +76,16 @@ time,dataset,classifier,method,run,fold,query,kappa
 2025-03-28 04:37:07.772253,artificial-characters,SVC,expected_error_reduction,0,0,74,0.16301822849697867
 2025-03-28 07:13:36.208079,artificial-characters,SVC,expected_error_reduction,0,0,75,0.16199747551654076
 2025-03-28 09:53:11.136456,artificial-characters,SVC,expected_error_reduction,0,0,76,0.173231558747715
+2025-03-28 13:08:33.175957,artificial-characters,SVC,expected_error_reduction,0,0,77,0.173231558747715
+2025-03-28 15:33:11.829749,artificial-characters,SVC,expected_error_reduction,0,0,78,0.1686275685878319
+2025-03-28 17:23:24.157195,artificial-characters,SVC,expected_error_reduction,0,0,79,0.16861866393041625
+2025-03-28 19:16:55.900564,artificial-characters,SVC,expected_error_reduction,0,0,80,0.16911258864084977
+2025-03-28 21:11:10.316549,artificial-characters,SVC,expected_error_reduction,0,0,81,0.1685296068637826
+2025-03-28 23:04:18.311832,artificial-characters,SVC,expected_error_reduction,0,0,82,0.17119659245880114
+2025-03-29 00:56:50.734201,artificial-characters,SVC,expected_error_reduction,0,0,83,0.17721938347133703
+2025-03-29 02:50:12.137647,artificial-characters,SVC,expected_error_reduction,0,0,84,0.17868467210417005
+2025-03-29 04:43:41.601575,artificial-characters,SVC,expected_error_reduction,0,0,85,0.18703308910594207
+2025-03-29 06:42:26.739999,artificial-characters,SVC,expected_error_reduction,0,0,86,0.19968397377218483
+2025-03-29 08:42:46.343044,artificial-characters,SVC,expected_error_reduction,0,0,87,0.22973923053415657
+2025-03-29 10:43:08.839123,artificial-characters,SVC,expected_error_reduction,0,0,88,0.22538074113462248
+2025-03-29 12:52:37.999579,artificial-characters,SVC,expected_error_reduction,0,0,89,0.22538074113462248

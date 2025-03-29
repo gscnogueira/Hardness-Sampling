@@ -1,0 +1,26 @@
+time,dataset,classifier,method,run,fold,query,kappa
+2025-03-29 04:20:44.464604,texture,SVC,expected_error_reduction,0,0,0,0.5820000000000001
+2025-03-29 04:43:05.431486,texture,SVC,expected_error_reduction,0,0,1,0.5900000000000001
+2025-03-29 05:06:14.376132,texture,SVC,expected_error_reduction,0,0,2,0.583
+2025-03-29 05:29:48.675200,texture,SVC,expected_error_reduction,0,0,3,0.579
+2025-03-29 05:53:20.124376,texture,SVC,expected_error_reduction,0,0,4,0.5780000000000001
+2025-03-29 06:17:13.696515,texture,SVC,expected_error_reduction,0,0,5,0.577
+2025-03-29 06:41:42.203913,texture,SVC,expected_error_reduction,0,0,6,0.579
+2025-03-29 07:06:10.442787,texture,SVC,expected_error_reduction,0,0,7,0.5780000000000001
+2025-03-29 07:31:04.952706,texture,SVC,expected_error_reduction,0,0,8,0.5780000000000001
+2025-03-29 07:56:11.937533,texture,SVC,expected_error_reduction,0,0,9,0.579
+2025-03-29 08:21:01.779603,texture,SVC,expected_error_reduction,0,0,10,0.5780000000000001
+2025-03-29 08:46:09.464355,texture,SVC,expected_error_reduction,0,0,11,0.5780000000000001
+2025-03-29 09:11:16.055675,texture,SVC,expected_error_reduction,0,0,12,0.577
+2025-03-29 09:36:54.965339,texture,SVC,expected_error_reduction,0,0,13,0.575
+2025-03-29 10:02:32.637247,texture,SVC,expected_error_reduction,0,0,14,0.5760000000000001
+2025-03-29 10:27:54.126547,texture,SVC,expected_error_reduction,0,0,15,0.575
+2025-03-29 10:53:37.907043,texture,SVC,expected_error_reduction,0,0,16,0.5760000000000001
+2025-03-29 11:19:06.329580,texture,SVC,expected_error_reduction,0,0,17,0.5760000000000001
+2025-03-29 11:49:40.267109,texture,SVC,expected_error_reduction,0,0,18,0.5509999999999999
+2025-03-29 12:14:50.890770,texture,SVC,expected_error_reduction,0,0,19,0.553
+2025-03-29 12:40:49.540875,texture,SVC,expected_error_reduction,0,0,20,0.532
+2025-03-29 13:06:19.230952,texture,SVC,expected_error_reduction,0,0,21,0.5489999999999999
+2025-03-29 13:32:12.649151,texture,SVC,expected_error_reduction,0,0,22,0.394
+2025-03-29 13:58:51.806959,texture,SVC,expected_error_reduction,0,0,23,0.398
+2025-03-29 14:25:29.308083,texture,SVC,expected_error_reduction,0,0,24,0.402
