@@ -62,6 +62,8 @@ class ActiveLearningExperiment:
                               shuffle=True,
                               random_state=self.random_state)
 
+        # TODO: tratar warning para quando a LPC tiver menos que
+        # fold_number instâncias
         for run_number in range(self.n_runs):
             for fold_number, (train_index, test_index) in enumerate(
                     skf.split(self.X, self.y)):

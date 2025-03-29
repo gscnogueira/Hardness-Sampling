@@ -406,6 +406,8 @@ def harmfulness_sampling(learner, X, n_instances):
 
     H = np.sum(np.reshape(np.arange(N), (N, -1)) == ne, axis=1)
 
+    # TODO: tratar warning de divisão por zero aqui (não impacta no
+    # funcionamento, mas polui logs)
     return H / (N - n_class[y].values)
 
 
