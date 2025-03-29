@@ -121,11 +121,8 @@ if __name__ == '__main__':
     # Iniciando experimentos
     main_logger.info('Iniciando experimentos')
 
-    # datasets = sorted([os.path.join(config.CSV_DIR, f)
-                       # for f in os.listdir(config.CSV_DIR)])
-
     datasets = sorted([os.path.join(config.CSV_DIR, f)
-                       for f in ['iris.csv']])
+                       for f in os.listdir(config.CSV_DIR)])
 
     args = (datasets, config.CLASSIFIER_DICT, config.SAMPLING_METHODS)
 
