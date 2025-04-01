@@ -59,7 +59,7 @@ def get_style(method):
     if method == 'random_sampling':
         return '--'
     elif method in CLASSIC:
-        return '-.'
+        return '-'
     elif method in NEIGHBORHOOD:
         return '^-'
     elif method in LIKELIHOOD:
@@ -70,3 +70,10 @@ def get_style(method):
         return 'h-'
     else:
         return 'd-'
+
+def get_hm_hatch(x: str):
+    if x == 'Neighbor-based': return '///'
+    if x == 'Likelihood-based':  return '||||||'
+    if x == 'Feature-based': return '//////'
+    if x == 'Tree-based' : return '\\\\\\\\\\\\\\'
+    if x == 'Class-Balance': return '\\\\'
