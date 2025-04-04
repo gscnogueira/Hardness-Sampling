@@ -1,0 +1,19 @@
+#+title: Análise de Resultados (V2)
+
+* Curvas de Ranking
+
+Em primeiro lugar, fica visível que houve um maior overlap entre as curvas as bandas do que na versão anterior dos experimentos (V1).
+Além disso, as bandas foram capazes de ocupar posições mais altas do que a versão antrior
+
+| Classificador | Pior curva | Melhor Curva |
+|---------------+------------+--------------|
+| CART          | TU         | MS           |
+| NB            | TU         | _CB_           |
+| SVM           | _KDN_        | ID           |
+| 5NN           | *Rnd*        | ID           |
+
+- Nessa vez, CART e NB tiveram uma digerenciação maior em seus limites. Antes eles compartilhavam uma região maior das bandas, e agora, fica visível que CART possuiu pelo menos um resultado melhor que NB, ao longo de todos os resultados, ao passo que a distância entre seus limites inferiores aumentou. Esse aumento de distância é muito mais um indicativo que houve uma queda de desempenho nos métodos que utilizaram o NB, visto que antes eles estavam acima da linha 60, e agora estão abaixo
+- É possivel ver que nesse caso o SVM é competivo, entretanto, ele precisa de mais iterações para apresentar melhores resultados. Mas é interessante observar que ele é a unica banda com uma tendencia de subida mais expressiva
+
+
+

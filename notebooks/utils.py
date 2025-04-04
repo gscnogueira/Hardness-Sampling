@@ -24,12 +24,12 @@ ABREV_DICT = {
     'f2_sampling': 'F2I',
     'f3_sampling': 'F3I',
     'f4_sampling': 'F4I',
-    'disjunct_class_percentage_sampling': 'DCP',
-    'disjunct_size_sampling': 'DS',
-    'tree_depth_pruned_sampling': 'TD$_P$',
-    'tree_depth_unpruned_sampling': 'TD$_U$',
-    'class_balance_sampling': 'CB',
-    'minority_value_sampling': 'MV'
+    'disjunct_class_percentage_sampling': '$DCP$',
+    'disjunct_size_sampling': '$DS$',
+    'tree_depth_pruned_sampling': '$TD_P$',
+    'tree_depth_unpruned_sampling': '$TD_U$',
+    'class_balance_sampling': '$CB$',
+    'minority_value_sampling': '$MV$'
 }
 
 CLASSIC = { 'margin_sampling', 'training_utility_sampling', 'density_weighted_sampling', 'expected_error_reduction', 'random_sampling'}
