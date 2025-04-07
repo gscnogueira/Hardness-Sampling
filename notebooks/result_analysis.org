@@ -15,5 +15,32 @@ Além disso, as bandas foram capazes de ocupar posições mais altas do que a ve
 - Nessa vez, CART e NB tiveram uma digerenciação maior em seus limites. Antes eles compartilhavam uma região maior das bandas, e agora, fica visível que CART possuiu pelo menos um resultado melhor que NB, ao longo de todos os resultados, ao passo que a distância entre seus limites inferiores aumentou. Esse aumento de distância é muito mais um indicativo que houve uma queda de desempenho nos métodos que utilizaram o NB, visto que antes eles estavam acima da linha 60, e agora estão abaixo
 - É possivel ver que nesse caso o SVM é competivo, entretanto, ele precisa de mais iterações para apresentar melhores resultados. Mas é interessante observar que ele é a unica banda com uma tendencia de subida mais expressiva
 
+* Rankings Médios
+Segundo os testes, não tem como afimrar que qualquer método foi melhor que a amostragem aleatória, apenas que foi pior.
 
+** Geral
+** Naive Bayes
+
+| Method | Superior a  | Similar            | Inferior a                                  |
+|--------+-------------+--------------------+---------------------------------------------|
+| TU     | resto       | Rnd, _LSR_           |                                             |
+| Rnd    | resto       | TU, _LSR, KDN, LSCI_ |                                             |
+| MS     | F1I, CB, MV | resto              | TU, Rnd, _LSR_                                |
+| EER    |             | resto              | TU, Rnd, _LSR_, _TDU , _KDN_                     |
+| ID     |             | resto              | TU, Rnd, _LSR, TDU, kDN, CLD, LSCI, DCP, N1I_ |
+
+
+** SVM
+
+| Method | Superior a                           | Similar            | Inferior a                                             |
+|--------+--------------------------------------+--------------------+--------------------------------------------------------|
+| Rnd    | F4I, CB, MV, EER, F3, F2, N2, TU, ID | resto              |                                                        |
+| MS     | EER, F3, F2, N2, TU, ID              | resto              |                                                        |
+| EER    | ID                                   | resto              | _KDN_, _LSR_, _TDU_, _CLD_, _RND_, _LSCI_, MS , _DCP_, _CL_, _N1I_, _DS_   |
+| ID     |                                      | resto              | KDN, LSR, TDU, CLD, Rnd, LSCI, MS, DCP, CL, N1I, DS, H |
+| Rnd    |                                      | TU, _LSR, KDN, LSCI_ |                                                        |
+
+
+** CART
+** 5NN
 
