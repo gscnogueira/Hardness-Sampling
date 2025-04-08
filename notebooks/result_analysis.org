@@ -16,7 +16,33 @@ Além disso, as bandas foram capazes de ocupar posições mais altas do que a ve
 - É possivel ver que nesse caso o SVM é competivo, entretanto, ele precisa de mais iterações para apresentar melhores resultados. Mas é interessante observar que ele é a unica banda com uma tendencia de subida mais expressiva
 
 * Rankings Médios
+
 Segundo os testes, não tem como afimrar que qualquer método foi melhor que a amostragem aleatória, apenas que foi pior.
+
+|      | TU | Rnd | LSR | TD_u | kDN | CLD | LSCI | DCP | N1I | H | N2I | DS | TD_p | CL | MS | F4I | EER | ID | F3I | F2I | F1I | CB | MV |
+|------+----+-----+-----+------+-----+-----+------+-----+-----+---+-----+----+------+----+----+-----+-----+----+-----+-----+-----+----+----|
+| TU   |    |     |     | +    | *   | *   | *    | *   | *   |   |     | *  | *    | *  | *  | *   | *   | *  | *   | *   | *   | *  | *  |
+| Rnd  |    |     |     |      |     | .   |      | .   | +   |   |     | *  | *    | *  | *  | *   | *   | *  | *   | *   | *   | *  | *  |
+| LSR  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| TD_u |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| kDN  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| CLD  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| LSCI |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| DCP  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| N1I  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| DS   |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| TD_p |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| CL   |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| MS   |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| F4I  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| EER  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| ID   |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| F3I  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| F2I  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| F1I  |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| CB   |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+| MV   |    |     |     |      |     |     |      |     |     |   |     |    |      |    |    |     |     |    |     |     |     |    |    |
+
 
 ** Geral
 ** Naive Bayes
