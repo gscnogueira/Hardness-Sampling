@@ -38,7 +38,6 @@ Segundo os testes, não tem como afimrar que qualquer método foi melhor que a a
 7. N2I, CL, F4I, MS
 8. 
 
-
 ** SVM
 - Melhor HM :: kDN
 - Nesse caso fica mais dificil de dizer quem é melhor, mas podemos perceber que alguns grupos de medidas se sobressairam em relação aos baselines.
@@ -65,3 +64,54 @@ Segundo os testes, não tem como afimrar que qualquer método foi melhor que a a
 - DCP foi melhor do que EER, e ID,
 - 
 
+* O que eu posso falar pra cada caso?
+** Gaussian NB
+*** Curvas de Rank com Bands
+- Melhor método foi TU (clássico). Apresentou uma tendencia crescente bem grande e depois caiu
+- Pior método foi CB (HM). Caiu bem rápido e depois estabilizou
+- Parece que vai melhor no começo, mas depois tem tendencia de piorar
+*** Curvas de Rank
+- TU vai muito bem no começo e depois cai. Começa distante das outras curvas, mas depois se aproxma de Rnd, e LSR
+- As curvas parecem apresnetar uma dendencia de estabilização em dua grande parte. Um pequeno grupo começa sendo muito melhor que os outros e um muito pior, e depois não hã mta novidade
+- Estranhamente, CB e MV apresentaram um desempenho igual e foram as piores.
+- Zona de cima ::  TU, Rnd e LSR
+- Zona de baixo :: ID, f3, f2, f1
+- Meião :: Limitado _superiormente_ por TDu e kDN, limitado _inferiormente_ por EERent
+*** Grupos
+- Class balance :: Piores que todo mundo 
+- Feature based :: Na melhor das hipóteses, equivalentes entre aos classicos (menos o U), com chance da maioria ser serem pior
+- Likelihood-based :: Dentro da banda de nighborhood. Possivelmente melhor ou equivalente que restante dos classicos
+- Neighborhood based :: foram melhores ou mto próximos a todos os baselines (com excessão do TU) durante todo o processo
+- Tree based :: Dentro da banda de nighborhood. Possivelmente melhor ou equivalente que restante dos classicos
+*** AULC Ranks
+- Não diferença estatistica significante entre TU, Rnd, e _LSR_
+- EERent, que limita o meião por baixo, não pode ser considerada melhor que nenhuma das piores estratégias que ficaram na região de baixo do gráfico.
+- Apesar de não apresentar significancia para com MS, _TDu_ foi superior a EER
+- Se forçar, alpha=0.1, kdn também é melhor que EER
+- Grande parte do meão vai significantemente melhor do que os piores da curva
+- O meião se configura um grupo que não possui diferença relevante
+*** Runtime
+- Não há diferença entre os Rnd o MS (ponto pro MS)
+- Não houve diferença significativa entre _MV_, _CB_, ID, _DS_, TU e _CL_
+- LSR, kdn, TDU, tiveram um runtime sinificantemente menor do que EER, sendo que TDU vai ser mais rápido que LSR
+** SVC
+*** Curvas de Rank com Bands
+- Boca de jacaré, pior e melhor começam no mesmo ponto, mas divergem.
+- Melhor foi o _kdn_
+- Pior foi o ID (clássico)
+*** Curvas de rank
+- Topo :: LSR começa bem, ultrapassado por N2I, que no final é acompanhado por margin_sampling
+- Meião ::  Mais esparçco, limitado superiormente por LSR, CLD, TDu e Rnd. Limitado inferiormente por EER, N2I e TU
+- Bottom  :: ID bem ditante do resto, mas MS começa nesa região tb
+*** Grupos
+- Class balance :: Melhor que ID e muito prçoximo de EER
+- Feature-based :: Entre EER e TU, mas não da pra dizer que foi melhor que alguma além de ID
+- Likelihood :: Ficaram mais próximos do Rnd, e melhores que TU e EER
+- Neighborhood :: Comportamentos muito diversos, da pra falar que foram melhores que ID, mas de resto foi mto amplo
+- Tree based :: acima de de EER, TU e ID, mas próximo de Rnd e abaixo de MS
+*** AULC Ranks
+- Parte de cima do gráfico é todo mundo meio igual
+- Apesar de KdN ser a melhor, LSR, CLD, Rnd, TDu, LSCI, DCP, DS, e N1I CL foram malhores que EER, TU e ID
+- Aqui, temos um monte de gnt que é melhor que EER, TU e ID
+*** Runtimes
+- CLD teve um desmepnho similar ao LSR e ao KDN, mas é mais rápido
