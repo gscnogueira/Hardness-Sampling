@@ -1,40 +1,130 @@
 #+title: Análise dos resultados
 
-Parando para pensar agora, não faz sentido análisar as curvas de ranking sem saber o que eu quero buscar nelas. 
-As curvas de ranking vão me mostrar como que um método se comporta durante o aprendizado ativo, enquanto a AUC média vai me mostrar o desempenho médio dos métodos.
+- Questionamento importante :: 100 queries faz realmente sentido? O que de fato eu estou avaliando?
+- Estou avaliando qual método é melhor em em AL em 100 queries de um determinado dataset D.
+- Muitos datasets podem saturar antes das 100 queries e outros podem nem fazer cosquinha. Mas isso indica alguma tendencia?
+ Acho que minha maior insegurança é: em datasets muito grande, será que 100 queries é suficiente para que o AL faça diferença, ou será que os modelos estão meio zoados ainda? Limitação que é possível elaborar
 
 * TODO AULC média
-** 5NN
-| Método | Rnd | ID | EER | MS | TU |
-|--------+-----+----+-----+----+----|
-| TDu    |     | *  | *   |    | *  |
-| kDN    |     | *  | *   |    | *  |
-| LSR    |     | *  | *   |    | *  |
-| CLD    |     | *  | *   |    | *  |
-| DCP    |     | *  | +   |    |    |
-| TDp    |     | *  | .   |    |    |
 
-** CART
-| Método | Rnd       | ID | EER | MS | TU        |
-|--------+-----------+----+-----+----+-----------|
-| LSR    |           | *  | *   | *  | Perde (.) |
-| LSCI   |           | *  | *   | *  | Perde (*) |
-| kDN    |           | *  | *   | *  | Perde (*) |
-| H      | Perde (*) | *  | *   | *  | Perde (*) |
-| CL     | Perde (*) | *  | *   | *  | Perde (*) |
-| F4I    | Perde (*) | *  | *   | *  | Perde (*) |
-| CLD    | Perde (*) | *  | *   | *  | Perde (*) |
-| N1I    | Perde (*) | *  | *   | *  | Perde (*) |
-| F3I    | Perde (*) |    | +   | +  | Perde (*) |
-** Naive Bayes
-| Método | Rnd | ID | EER | MS | TU |
-|--------+-----+----+-----+----+----|
-| LSR    |     | *  | *   | *  |    |
-| TDu    |     | *  | +   |    |    |
+Os resultados mostram que não podemos afirmar que o método que obteve o melhor rank médio foi melhor que a amostragem aleatória (Rnd). Dessa forma, não podemos temos evidência o suficiente para comprovar o beneficio do AL nesse conjunto de dadasets. Entretanto, é importante destacar que a afirmação anterior é limitada as técnicas de amostragem utilizadas. É possível que exista beneficio nesse conjunto de dados ao utilizar outras técnicas. 
+
+Além disso, os resultados do Davi mostram que existe diferença significativa em aplicar o AL. Dessa forma, é importante consultar esses resultados novamente, para verificar se existe contradição, ou se foram utilizados métodos que apresentam uma significancia maior.
+
+Os testes mostram que:
+1. Não podemos dizer que algum método é melhor que Rnd
+
+2. Para o conjunto D, podemos dizer com com uma cofiança de 99% que:
+   1. _Rnd é melhor que EER e ID_.
+   2. _Rnd é melhor que MS para CART e NB_.
+   3. _Rnd é melhor que TU para 5NN e SVM_.
+
+3. No que diz respeito ao HardS
+   1. No geral, Rnd é melhor que F1, F2 e F3 com (p=0.01)
+   2. No geral, Rnd, é melhor que medidas Feature-based (p=0.05)
+   3. No geral, Rnd é melhor que medidas Class Balance (p=0.05)
+
+
+** Comparação com o topline
+
+#+CAPTION:Medidas que não foram piores que o topline.
+| HM   | Grupo   | CART (TU) | NB (TU) | 5NN (Rnd) | SVM (kDN) |
+|------+---------+-----------+---------+-----------+-----------|
+| LSR  | Neigh   | *         | *       | *         | *         |
+|------+---------+-----------+---------+-----------+-----------|
+| kDN  | Neigh   |           |         | *         | *         |
+| LSCI | Neigh   |           |         | *         | *         |
+| CLD  | Likeli. |           |         | *         | *         |
+| TDu  | Tree    |           |         | *         | *         |
+| DCP  | Tree    |           |         | *         | *         |
+| DS   | Tree    |           |         | *         | *         |
+|------+---------+-----------+---------+-----------+-----------|
+| N1I  | Neigh   |           |         |           | *         |
+| CL   | Likeli. |           |         |           | *         |
+
+Tabela mostra que:
+1. Não podemos dizer que qualquer topline foi melhor que o LSR
+2. Para 5NN e NB fica mais dificil dizer quem foi o melhor de fato.
+
+** Clássicos X Baseline
+
+#+caption: Métodos classicos que foram batidos pelo baseline
+| Método | 5NN | CART | NB | SVM |
+|--------+-----+------+----+-----|
+| EER    | *   | *    | *  | *   |
+| ID     | *   | *    | *  | *   |
+| MS     |     | *    | *  |     |
+| TU     | *   |      |    | *   |
+
+Com base nos resultados podemos, podemos afirmar com 99% de certeza que a amostragem aleatória foi melhor que EER e ID, independente do learner.
+
+Além disso, para CART e NB e amostragem aleatória se mostrou melhor do que MS (o que pode ser um indicativo de que ela não seja tão boa assim quando outros classificadores são utilizados)
+
+** HMs vs Baseline
+
+#+CAPTION:Métodos HardS batidos pelo baseline
+| Método | 5NN | CART | NB | SVM |
+|--------+-----+------+----+-----|
+| kDN    |     |      |    |     |
+| LSR    |     |      |    |     |
+| LSCI   |     |      |    |     |
+| TDu    |     | *    |    |     |
+| CLD    |     | +    | .  |     |
+| DCP    |     | *    | .  |     |
+| TDp    |     | *    | *  |     |
+| DS     |     | *    | *  |     |
+|--------+-----+------+----+-----|
+| N1I    | +   | *    | +  |     |
+| H      | +   | +    | *  |     |
+| CL     | *   | +    | *  |     |
+|--------+-----+------+----+-----|
+| F4I    | *   | +    | *  | *   |
+| MV     | *   | *    | *  | +   |
+| CB     | *   | *    | *  | +   |
+| N2I    | *   | *    | *  | *   |
+| F3I    | *   | *    | *  | *   |
+| F1I    | *   | *    | *  | *   |
+| F2I    | *   | *    | *  | *   |
+
+- Descartar Feature-based
+- Descartar CB
+- Fora o SVM, podemos descartar N1I, H, e CL
+- Não temos certeza se Rnd é melhor do que:
+  - 5NN :: kDN, LSR, LSCI, TDu, CLD, DCP, TDp, DS
+  - CART :: kDN, LSR, LSCI
+  - NB :: kDN, LSR, LSCI, TDu,
+  - SVM :: kDN, LSR, LSCI, TDu, CLD, DCP, TDp, DS, N1I, H, CL
+** Comparação com métodos clássicos
+
+Dos métodos do HardS que não foram considerados piores que o baseline, quais métodos clássicos podemos dizer que são piores que eles e com qual confiança?
+
+#+caption:5NN
+| HM   | EER | ID | MS | TU |
+|------+-----+----+----+----|
+| TDu  | *   | *  |    | *  |
+| kDN  | *   | *  |    | *  |
+| LSR  | *   | *  |    | +  |
+| CLD  | *   | *  |    | +  |
+| DCP  | +   | *  |    |    |
+| LSCI | .   | *  |    |    |
+| TDp  |     | *  |    |    |
+| DS   |     | *  |    |    |
+
+
+#+caption:CART
+| HM  | EER | ID | MS | TU |
+|-----+-----+----+----+----|
+
 
 * TODO Curvas de Ranking
 
 Responder as perguntas:
 1. Algum método do HardS é superior às estratégias clássicas durante o processo de AL?
 2. Algum método do HardS é superior às estratégias clássicas em algum momento do processo de AL
+
+* Questões Pendentes
+- [ ] Analisar resultados do Davi.
+- [ ] Verificar se existe uma diferença do resultado macro quando dividimos os conjuntos de dados em grupos menores (por exemplo, agrupar por tamanho do dataset).
+- [ ] Listar limitações das analises e das suposições feitas (e.g. por quê 100 consultas? O que de fato estamos comparando).
+- [ ] N2I deveria ter ido tão mal assim? Ela é bem parecida com LSR e LSCI
 
