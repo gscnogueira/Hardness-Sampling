@@ -18,12 +18,16 @@ Os testes mostram que:
    1. _Rnd é melhor que EER e ID_.
    2. _Rnd é melhor que MS para CART e NB_.
    3. _Rnd é melhor que TU para 5NN e SVM_.
+   4. Apesar de sua colocação superior, _não temos confiança suficiente_ para dizer que _TU é melhor que Rnd para NB e CART_
 
 3. No que diz respeito ao HardS
    1. No geral, Rnd é melhor que F1, F2 e F3 com (p=0.01)
    2. No geral, Rnd, é melhor que medidas Feature-based (p=0.05)
    3. No geral, Rnd é melhor que medidas Class Balance (p=0.05)
-
+   4. Apesar do desempenho de Rnd, não temos confiança para afirmar que ele é melhor que _kDN, LSR e LSCI_ em nenhum dos casos, são melhores recomendações gerais
+   5. Fica menos evidente quais seriam as escolhas adequadas para 5NN e SVM, em ambos os casos varias medidas não podem ser estatitiscamente diferenciadas de Rnd e varias outras.
+   6. Fica evidente que, tanto as medidas Class Balance, quanto as Medidas Feature based não funcionam como boas medidas de infomatividade para o aprendizado ativo.
+   7. Surepreeendentemente, N2I, aprsentou um desempenho muito abaixo das outras medidas de seu grupo, talvez isso deva ser investigado
 
 ** Comparação com o topline
 
@@ -95,26 +99,36 @@ Além disso, para CART e NB e amostragem aleatória se mostrou melhor do que MS 
   - NB :: kDN, LSR, LSCI, TDu,
   - SVM :: kDN, LSR, LSCI, TDu, CLD, DCP, TDp, DS, N1I, H, CL
 ** Comparação com métodos clássicos
-
-Dos métodos do HardS que não foram considerados piores que o baseline, quais métodos clássicos podemos dizer que são piores que eles e com qual confiança?
-
-#+caption:5NN
-| HM   | EER | ID | MS | TU |
-|------+-----+----+----+----|
-| TDu  | *   | *  |    | *  |
-| kDN  | *   | *  |    | *  |
-| LSR  | *   | *  |    | +  |
-| CLD  | *   | *  |    | +  |
-| DCP  | +   | *  |    |    |
-| LSCI | .   | *  |    |    |
-| TDp  |     | *  |    |    |
-| DS   |     | *  |    |    |
-
-
-#+caption:CART
-| HM  | EER | ID | MS | TU |
-|-----+-----+----+----+----|
-
+*** 5NN
+1. Qualquer alternativa é melhor que ID
+2. TDu e MS estão *bem próximos* em rank médio.
+3. NINGUÉM é MELHOR que o Rnd
+4. Mta gnt é PIOR que o Rnd
+   1. Incluindo 3/4 dos clássicos
+5. Baseline, Clássico e HMs TDu, MS, kDN, LSR, CLD, DCP, TDp, LSCI e DS competem pela primeira posição
+   * Clássico :: MS
+   * HMs :: TDu, kDN, LSR, CLD, DCP, TDp, LSCI e DS
+6. Desses, conseguiram superar os classicos:
+   * TU  :: Rnd, _TDu_, MS, _kDN_, _LSR_, _CLD_
+   * EER :: Rnd, TDu, MS, kDN, LSR, CLD, DCP, TDP
+   * ID  :: Rnd, TDu, MS, kDN, LSR, CLD, DCP, TDP, LSCI, DS
+*** CART
+1. Muitas medidas parecem ter ido igualmente mal, abaixo de N2I
+2. Nesse gripo estão as MS, EER e ID (sendo essa melhor colocada que as duas ultimas)
+3. Apenas, TU, Rnd, e LSR competem pela primeira posição
+4. LSR é pior que TU com p=0.1
+5. O segundo lugar pode ser disputado entre: Rnd, LSR, LSCI e kDN. Esses ultimos dois definitivamente não estão em primeiro.
+6. Todos esses apresentaram uma colocação melhor que os métodos clássicos com p=0.01.
+*** NB 
+1. Aqui, ID pareceu ir um pocuo melhor, mas mesmo assim não foi mto bem
+2. F3I, MV, CB, F1I foram desbancadas por quase todo mundo
+3. TU, Rnd e LSR ficaram concorrendo pela primeira posição. Os 3 melhores que qualquer método clássico
+4. Embora, Rnd, LSR, TDu, kDN, LSCI, DCP e CLD ficaram em disputa pela segunda, apenas Rnd e LSR foram efetivamente melhor que os outros classicos. TDu e kDN podem ser tidos como melhores que EER e ID e o resto apenas ID, o que não significa mta coisa.
+*** SVM
+1. Competição mais acirrada pelo primeiro lugar:
+   - _kDN_, _LSR_, _CLD_, Rnd, _TDu_, _LSCI_, _DCP_, _DS_, _N1I_, _CL_, MS
+2. Proximidade muito maior de rank a partir de CLD e MS
+3. Todos esses que disputam o primeiro são efetivamente melhores que os métodos clássicos
 
 * TODO Curvas de Ranking
 
