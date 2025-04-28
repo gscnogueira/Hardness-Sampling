@@ -80,7 +80,3 @@ pip install -r notebooks/requirements.txt
 ## Helper Scripts
 
 The files in the `scripts/` directory are auxiliary scripts designed to facilitate tasks such as selecting the datasets used, converting them from ARFF to CSV, and generating LaTeX tables from the results.
-
-## Credits
-
-This project was developed to support the paper **Hardness Sampling: Exploring Instance Hardness in Pool-based Active Learning** by Gabriel da S. C. Nogueira, Davi, P. dos Santos, and Luís P. F. Garcia.
