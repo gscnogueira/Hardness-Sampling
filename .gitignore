@@ -1,4 +1,6 @@
 *~
 venv/
+experiments/logs/*.log
 .python-version
 __pycache__
+*.ipynb_checkpoints/
