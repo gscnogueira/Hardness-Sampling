@@ -48,12 +48,13 @@ ABREV_MODEL = {
 }
 
 def get_hm_type(x: str):
-    if x in CLASSIC: return 'Classic'
-    if x in NEIGHBORHOOD: return 'Neighbor-based'
-    if x in LIKELIHOOD: return 'Likelihood-based'
-    if x in FEATURE_BASED: return 'Feature-based'
-    if x in TREE_BASED: return 'Tree-based'
-    if x in CLASS_BALANCE: return 'Class-Balance'
+    if x  == 'random_sampling': return 'baseline'
+    if x in CLASSIC: return 'classic'
+    if x in NEIGHBORHOOD: return 'neighborhood'
+    if x in LIKELIHOOD: return 'likelihood'
+    if x in FEATURE_BASED: return 'feature'
+    if x in TREE_BASED: return 'tree'
+    if x in CLASS_BALANCE: return 'class-balance'
         
 def get_style(method):
     if method == 'random_sampling':
