@@ -6,11 +6,11 @@ RESULTS_V2_PATH = '../results/v2'
 DATASET_LIST = [ f.strip() for f in open('../datasets/datasets.txt') ]
 
 ABREV_DICT = {
-    'random_sampling': 'Rnd+',
-    'margin_sampling': 'MS*',
-    'training_utility_sampling': 'TU*',
-    'density_weighted_sampling': 'ID*',
-    'expected_error_reduction': 'EER*',
+    'random_sampling': 'Rnd',
+    'margin_sampling': 'MS',
+    'training_utility_sampling': 'TU',
+    'density_weighted_sampling': 'ID',
+    'expected_error_reduction': 'EER',
     'borderline_points_sampling': 'N1I',
     'k_disagreeing_neighbors_sampling': 'kDN',
     'local_set_cardinality_sampling': 'LSCI',
