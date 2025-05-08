@@ -10,7 +10,7 @@ ABREV_DICT = {
     'margin_sampling': 'MS',
     'training_utility_sampling': 'TU',
     'density_weighted_sampling': 'ID',
-    'expected_error_reduction': 'EER',
+    'expected_error_reduction': 'EER$_{ent}$',
     'borderline_points_sampling': 'N1I',
     'k_disagreeing_neighbors_sampling': 'kDN',
     'local_set_cardinality_sampling': 'LSCI',
@@ -26,8 +26,8 @@ ABREV_DICT = {
     'f4_sampling': 'F4I',
     'disjunct_class_percentage_sampling': 'DCP',
     'disjunct_size_sampling': 'DS',
-    'tree_depth_pruned_sampling': 'TD$_P$',
-    'tree_depth_unpruned_sampling': 'TD$_U$',
+    'tree_depth_pruned_sampling': 'TD$_{p}$',
+    'tree_depth_unpruned_sampling': 'TD$_{u}$',
     'class_balance_sampling': 'CB',
     'minority_value_sampling': 'MV'
 }
