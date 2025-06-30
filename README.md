@@ -30,7 +30,7 @@ cd Hardness-Sampling
 ## Datasets
 
 
-For the experiments, a diverse collection of 90 classification datasets was used. These datasets are located in the `datasets/csv` directory and represent a subset of the datasets used in the work of [Pereira-Santos et al. (2019)](https://doi.org/10.1016/j.neucom.2017.05.105), which are stored in the `datasets/arff` directory.
+For the experiments, a diverse collection of 80 classification datasets was used. These datasets are located in the `datasets/csv` directory and represent a subset of the datasets used in the work of [Pereira-Santos et al. (2019)](https://doi.org/10.1016/j.neucom.2017.05.105), which are stored in the `datasets/arff` directory.
 
 ## Running the Experiments
 
